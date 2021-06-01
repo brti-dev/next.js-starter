@@ -251,15 +251,22 @@ button,
     &:hover {
         box-shadow: var(--color-comment) 0px 0px 0px 1px;
     }
+
     &:focus {
         box-shadow: var(--color-comment) 0px 0px 0px 3px;
     }
 }
 
 select.input {
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     font-size: 88%;
+}
+
+textarea.input {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    line-height: 1;
 }
 
 button,
