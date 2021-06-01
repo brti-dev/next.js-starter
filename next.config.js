@@ -1,13 +1,10 @@
 module.exports = {
+    // For static export to deploy to Dreamhost (not necessary for AWS)
     trailingSlash: true,
-    i18n: {
-        locales: ['en-US'],
-        defaultLocale: 'en-US',
-    },
     async headers() {
         return [
             {
-                source: '/:all*(svg|jpg|png)',
+                source: '/:all*(svg|jpg|png|webp)',
                 locale: false,
                 headers: [
                     {
