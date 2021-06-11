@@ -1,4 +1,4 @@
-This is a starter for a Next.js app bootstrapped with TypeScript. It includes CSS for a responsive app, themes based on `prefers-color-scheme` media query, and common UI components.
+This is a starter for a Next.js app bootstrapped with TypeScript. It includes CSS for a responsive app, light and dark themes based on `prefers-color-scheme` media query, a library of common UI components, and helper React hooks.
 
 ## Getting Started
 
@@ -31,7 +31,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 Currently configured for [static export](https://nextjs.org/docs/advanced-features/static-html-export). To deploy another way:
 
 1. In `next.config.js` set `trailingSlash` to `false`.
-2. Run `next export` instead of `npm run build`
+2. Run `next build` instead of `npm run build`
 
 ## Merging after changes to this repo
 
