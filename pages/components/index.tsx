@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import Layout from '@/components/Layout'
 
-const COMPONENTS = ['button']
+const COMPONENTS = ['button', 'checkbutton']
 
 export default function Foo() {
     return (

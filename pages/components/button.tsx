@@ -25,7 +25,7 @@ const ButtonCode = ({ children, ...props }) => {
     )
 }
 
-export default function Foo() {
+export default function ButtonComponent() {
     return (
         <Layout>
             <h1>Button</h1>

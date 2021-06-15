@@ -10,12 +10,14 @@ import '@reach/skip-nav/styles.css'
 import IconButton from './IconButton'
 import scrollToTop from '@/lib/scroll-to-top'
 
-export const SITE_TITLE = 'My App'
+export const SITE_TITLE = '✨My App'
 
+// Used to build site navigation
 const PAGES = [
     { link: '/', title: 'Home' },
+    { link: '/components', title: 'UI Components' },
     { link: '/foo', title: 'Foo' },
-    { link: '/test', title: 'Test' },
+    { link: '/sandbox', title: 'Test Page' },
 ]
 
 export default function Layout({ title = SITE_TITLE, children }) {

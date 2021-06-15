@@ -645,3 +645,16 @@ button,
     letter-spacing: 0.08em;
     font-weight: 400;
 }
+
+.visually-hidden {
+    border: 0px;
+    clip: rect(0px, 0px, 0px, 0px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0px;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+    overflow-wrap: normal;
+}
