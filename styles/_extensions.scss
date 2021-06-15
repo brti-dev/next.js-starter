@@ -1,8 +1,20 @@
 @use 'theme' as *;
 
 %surface {
+    --color-body: #{$color-surface-light};
+    --color-surface: #{$color-comment-light};
+    --color-surface-hover: #{$purple};
+    --color-comment: #{$purple};
+
+    @include theme(dark) {
+        --color-body: #{$color-surface-dark};
+        --color-surface: #{$color-comment-dark};
+        --color-surface-hover: #{$pink};
+        --color-comment: #{$pink};
+    }
+
     padding: 1.5em;
-    background-color: var(--color-surface);
+    background-color: var(--color-body);
 }
 
 %card {
