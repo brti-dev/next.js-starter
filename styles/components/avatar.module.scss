@@ -1,0 +1,37 @@
+@use '../theme' as *;
+
+.avatar {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.25rem;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 1;
+  user-select: none;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.color-default {
+  color: var(--color-font);
+  background-color: var(--color-surface);
+}
+
+.color-primary {
+  background-color: var(--color-primary);
+}
+
+.color-secondary {
+  background-color: var(--color-secondary);
+}
+
+.color-red {
+  color: white;
+  background-color: $red;
+}
+
+.color-green {
+  color: white;
+  background-color: $green;
+}
