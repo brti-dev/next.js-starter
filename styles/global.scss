@@ -485,6 +485,71 @@ button,
   }
 }
 
+[data-reach-menu],
+[data-reach-menu-popover] {
+  display: block;
+  position: absolute;
+  margin-top: 0.5em !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+[data-reach-menu][hidden],
+[data-reach-menu-popover][hidden] {
+  display: none;
+}
+[data-reach-menu-list],
+[data-reach-menu-items] {
+  margin: 0;
+  padding: 0;
+  display: block;
+  white-space: nowrap;
+  outline: none;
+  font-size: 85%;
+}
+[data-reach-menu-item] {
+  display: block;
+  user-select: none;
+}
+/*
+ The dom structure of a MenuLink is reach-menu-item > a,
+ so to target all items we can use `data-reach-menu-item`
+*/
+[data-reach-menu-item] {
+  /*
+    These are styled in one rule instead of something like a[data-reach-menu-item]
+    and li[data-reach-menu-item] so that apps don't have to fight specificity and
+    can style both li and a menu items with one rule,
+    ie: `[data-selected] { background: red; }`.
+    Otherwise they'd have to define two styles, one for a and one for li.
+  */
+
+  /* reach-menu-item */
+  cursor: pointer;
+
+  /* a */
+  display: block;
+  color: inherit;
+  font: inherit;
+  text-decoration: initial;
+
+  /* both */
+  padding: 0.5em 1em;
+  opacity: 0.8;
+
+  & + * {
+    border-top: 1px solid var(--color-comment);
+  }
+}
+/* pseudo pseudo selector */
+[data-reach-menu-item][data-selected] {
+  outline: none;
+  opacity: 1;
+}
+[data-reach-menu-item][aria-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .popover,
 [data-reach-popover] {
   margin-top: 1em;
@@ -492,7 +557,7 @@ button,
   border: 0;
   border-radius: 3px;
   background-color: var(--color-surface);
-  box-shadow: 0 0 5px var(--color-surface) !important;
+  box-shadow: 0 0 5px var(--color-body) !important;
   outline: none !important;
 
   .current-nav,

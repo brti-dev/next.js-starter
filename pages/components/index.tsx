@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import Layout from '@/components/Layout'
 
-const COMPONENTS = ['avatar', 'button', 'checkbutton']
+const COMPONENTS = ['avatar', 'button', 'checkbutton', 'menu']
 
 export default function Foo() {
   return (
@@ -11,7 +11,9 @@ export default function Foo() {
       <ul>
         {COMPONENTS.map(component => (
           <li key={component}>
-            <Link href={`/components/${component}`}>{component}</Link>
+            <Link href={`/components/${component}`}>
+              {component[0].toUpperCase() + component.substring(1)}
+            </Link>
           </li>
         ))}
       </ul>
