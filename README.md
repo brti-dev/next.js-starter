@@ -39,6 +39,10 @@ Currently configured for [static export](https://nextjs.org/docs/advanced-featur
 2. Pull the files `git pull starter`
 3. Merge the files `git merge starter/main`
 
+## UI Component Documentation
+
+This started comes packaged with a selection of common UI components. See [UI Components documentation](https://next-js-starter-3nqkw5h5m-dr-spaceman.vercel.app/components/) for instructions on the use of a some of the components available. 
+
 ## Used to Build
 
 - [mattberti.com](http://mattberti.com)
