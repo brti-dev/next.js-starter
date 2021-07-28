@@ -26,7 +26,7 @@ export default function CheckButton({
   const toggleChecked = () => {
     setChecked(!isChecked)
     if (onChange) {
-      onChange(isChecked)
+      onChange(!isChecked)
     }
   }
 
