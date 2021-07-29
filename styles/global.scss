@@ -384,10 +384,29 @@ button,
   border-radius: var(--radius);
   letter-spacing: 0.01071em;
   background-color: var(--color-surface);
+
+  & + .alert {
+    margin-top: 1em;
+  }
 }
-.alert__error {
+.alert--error {
   color: $red;
   background-color: $pink;
+}
+.alert--success {
+  color: $green;
+  border: 2px solid $green;
+  background-color: transparent;
+}
+.alert--info {
+  color: $blue;
+  border: 2px solid $blue;
+  background-color: transparent;
+}
+.alert--warning {
+  color: $purple;
+  border: 2px solid $purple;
+  background-color: transparent;
 }
 
 .card {
