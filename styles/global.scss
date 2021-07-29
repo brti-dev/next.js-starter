@@ -376,8 +376,8 @@ button,
 .alert {
   display: flex;
   align-items: center;
-  gap: 0.5em;
-  padding: 6px 16px;
+  gap: 1em;
+  padding: 0.5em 1em;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.43;
@@ -391,7 +391,8 @@ button,
 }
 .alert--error {
   color: $red;
-  background-color: $pink;
+  background-color: transparent;
+  border: 2px solid $red;
 }
 .alert--success {
   color: $green;
