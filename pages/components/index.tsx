@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import Layout from '@/components/Layout'
 
-const COMPONENTS = ['alert', 'avatar', 'button', 'checkbutton', 'menu']
+const COMPONENTS = ['alert', 'avatar', 'button', 'checkbutton', 'form', 'menu']
 
 export default function Foo() {
   return (
