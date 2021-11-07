@@ -6,12 +6,12 @@ import classes from '@/styles/article.module.scss'
 import Date from '@/components/Date'
 
 type ArticleProps = {
-    title?: string
-    description?: string | React.ReactElement
-    preface?: string | React.ReactElement
-    date?: string | Date
-    nextArticle?: React.ReactElement
-    children: React.ReactElement | React.ReactElement[]
+  title?: string
+  description?: string | React.ReactElement
+  preface?: string | React.ReactElement
+  date?: string | Date
+  nextArticle?: React.ReactElement
+  children: React.ReactElement | React.ReactElement[]
 }
 
 /**
@@ -19,71 +19,70 @@ type ArticleProps = {
  * the content.
  */
 export default function Article({
-    title,
-    description,
-    preface,
-    date,
-    nextArticle,
-    children,
-    ...rest
+  title,
+  description,
+  preface,
+  date,
+  nextArticle,
+  children,
+  ...rest
 }: ArticleProps) {
-    let header: React.ReactElement
-    let hasHeader = false
-    let next: React.ReactElement
+  let header: React.ReactElement
+  let hasHeader = false
+  let next: React.ReactElement
 
-    if (nextArticle) {
-        // Dissect given <Link> or <a> component and rebuild it using original props
-        next = (
-            <section className={classes.next}>
-                <Link href={nextArticle.props.href}>
-                    <a {...nextArticle.props}>
-                        <small className="text-label">Up Next</small>
-                        <big>
-                            <strong>{nextArticle.props.children}</strong>
-                            <ArrowRightIcon className="arrow" />
-                        </big>
-                    </a>
-                </Link>
-            </section>
-        )
-    }
-
-    if (children) {
-        // Check for <header> in children
-        React.Children.forEach(children, (child) => {
-            if (child && child.type === 'header') {
-                hasHeader = true
-            }
-        })
-    }
-
-    // Build header manually if not given
-    if (!hasHeader) {
-        header = (
-            <header>
-                {date && <Date date={date} />}
-                <h1>{title}</h1>
-                {description && <div className={classes.description}>{description}</div>}
-                {preface && <div className={classes.preface}>{preface}</div>}
-            </header>
-        )
-    }
-
-    return (
-        <article
-            className={classes.root}
-            {...rest}
-        >
-            {header}
-            {children}
-            {next}
-        </article>
+  if (nextArticle) {
+    // Dissect given <Link> or <a> component and rebuild it using original props
+    next = (
+      <section className={classes.next}>
+        <Link href={nextArticle.props.href}>
+          <a {...nextArticle.props}>
+            <small className="text-label">Up Next</small>
+            <big>
+              <strong>{nextArticle.props.children}</strong>
+              <ArrowRightIcon className="arrow" />
+            </big>
+          </a>
+        </Link>
+      </section>
     )
+  }
+
+  if (children) {
+    // Check for <header> in children
+    React.Children.forEach(children, child => {
+      if (child && child.type === 'header') {
+        hasHeader = true
+      }
+    })
+  }
+
+  // Build header manually if not given
+  if (!hasHeader) {
+    header = (
+      <header>
+        {date && <Date date={date} />}
+        <h1>{title}</h1>
+        {description && (
+          <div className={classes.description}>{description}</div>
+        )}
+        {preface && <div className={classes.preface}>{preface}</div>}
+      </header>
+    )
+  }
+
+  return (
+    <article className={classes.root} {...rest}>
+      {header}
+      {children}
+      {next}
+    </article>
+  )
 }
 
 type ArticleContentProps = {
-    htmlContent?: string // Static HTML to set as article content; Uses React's `dangerouslySetInnerHTML` inside an additional <div> element
-    children?: React.ReactElement // Article body
+  htmlContent?: string // Static HTML to set as article content; Uses React's `dangerouslySetInnerHTML` inside an additional <div> element
+  children?: React.ReactElement // Article body
 }
 
 /**
@@ -96,9 +95,9 @@ type ArticleContentProps = {
  * @see https://github.com/reactjs/rfcs/pull/129
  */
 export function ArticleContent({ htmlContent, children }: ArticleContentProps) {
-    if (htmlContent) {
-        return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-    }
+  if (htmlContent) {
+    return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+  }
 
-    return children
+  return children
 }

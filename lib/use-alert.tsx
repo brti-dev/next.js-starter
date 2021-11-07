@@ -14,27 +14,27 @@ type InitialState = null | string | Error
  * @returns {function} Function to set alert message
  */
 function useAlert<S>(
-    initialState: S | (() => S)
+  initialState: S | (() => S)
 ): [React.ComponentType, React.Dispatch<React.SetStateAction<S>>] {
-    const [message, setMessage] = useState(initialState)
+  const [message, setMessage] = useState(initialState)
 
-    const component = useCallback(() => {
-        const isError = message instanceof Error
+  const component = useCallback(() => {
+    const isError = message instanceof Error
 
-        if (!message) return null
+    if (!message) return null
 
-        return (
-            <Alert
-                hidden={!message}
-                className={`alert${isError ? ' alert__error' : ''}`}
-            >
-                {isError && <ErrorIcon />}
-                {message && <span>{message.toString()}</span>}
-            </Alert>
-        )
-    }, [message])
+    return (
+      <Alert
+        hidden={!message}
+        className={`alert${isError ? ' alert__error' : ''}`}
+      >
+        {isError && <ErrorIcon />}
+        {message && <span>{message.toString()}</span>}
+      </Alert>
+    )
+  }, [message])
 
-    return [component, setMessage]
+  return [component, setMessage]
 }
 
 export default useAlert
