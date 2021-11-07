@@ -1,40 +1,63 @@
-import { useState, useCallback, createElement } from 'react'
+import { useState, useCallback, createElement, useReducer } from 'react'
 import Alert from '@reach/alert'
-import { BiError as ErrorIcon } from 'react-icons/bi'
+import {
+  BiError as ErrorIcon,
+  BiCheckCircle as SuccessIcon,
+  BiInfoCircle as InfoIcon,
+} from 'react-icons/bi'
 
-type InitialState = null | string | Error
+type AlertDispatch = {
+  message: string | null
+  severity?: 'error' | 'success' | 'warning' | 'info'
+}
+
+function reducer(
+  state: null | AlertDispatch,
+  action: null | string | AlertDispatch
+): null | AlertDispatch {
+  if (typeof action === 'string') {
+    return { message: action }
+  }
+
+  if (action == null) {
+    return { message: null }
+  }
+
+  return { message: action.message, severity: action.severity }
+}
 
 /**
  * Hook to manage alert state.
  *
  * @param initialState Initial state; If true-ish, the alert will display immediately
  *
- * @returns {array} Array
  * @returns {JSX.Element} Alert component to render
  * @returns {function} Function to set alert message
  */
-function useAlert<S>(
-  initialState: S | (() => S)
-): [React.ComponentType, React.Dispatch<React.SetStateAction<S>>] {
-  const [message, setMessage] = useState(initialState)
+function useAlert(
+  initialState: null | string | AlertDispatch
+): [React.ComponentType, any] {
+  const [alert, setAlert] = useReducer(reducer, reducer(null, initialState))
 
   const component = useCallback(() => {
-    const isError = message instanceof Error
+    const { message, severity } = alert
+    const classNames = ['alert']
+    if (severity) classNames.push(`alert--${severity}`)
 
     if (!message) return null
 
     return (
-      <Alert
-        hidden={!message}
-        className={`alert${isError ? ' alert__error' : ''}`}
-      >
-        {isError && <ErrorIcon />}
-        {message && <span>{message.toString()}</span>}
+      <Alert hidden={!message} className={classNames.join(' ')}>
+        {severity === 'error' && <ErrorIcon />}
+        {severity === 'warning' && <ErrorIcon />}
+        {severity === 'success' && <SuccessIcon />}
+        {severity === 'info' && <InfoIcon />}
+        {message && <span>{message}</span>}
       </Alert>
     )
-  }, [message])
+  }, [alert])
 
-  return [component, setMessage]
+  return [component, setAlert]
 }
 
 export default useAlert

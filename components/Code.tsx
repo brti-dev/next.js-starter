@@ -14,7 +14,16 @@ const mapProps = (props): string => {
   return propString
 }
 
-export default function Code({ componentType, children = null, ...props }) {
+type CodeType = {
+  componentType: string
+  children?: React.ReactElement | React.ReactElement[] | string
+} & any
+
+export default function Code({
+  componentType,
+  children = null,
+  ...props
+}: CodeType) {
   if (!children) {
     return (
       <code>
