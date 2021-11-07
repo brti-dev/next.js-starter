@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-import Layout from '@/components/Layout'
+import Layout from 'components/Layout'
 import {
   Menu,
   MenuList,
@@ -10,8 +10,8 @@ import {
   MenuItems,
   MenuPopover,
   MenuLink,
-} from '@/components/Menu'
-import Code from '@/components/Code'
+} from 'components/Menu'
+import Code from 'components/Code'
 
 export default function MenuComponent() {
   const [selected, setSelected] = useState(null)

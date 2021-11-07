@@ -1,6 +1,6 @@
-import Layout from '@/components/Layout'
-import Avatar from '@/components/Avatar'
-import Code from '@/components/Code'
+import Layout from 'components/Layout'
+import Avatar from 'components/Avatar'
+import Code from 'components/Code'
 
 export default function AvatarComponent() {
   return (

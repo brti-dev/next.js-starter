@@ -11,7 +11,7 @@ import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 
 import IconButton from './IconButton'
-import scrollToTop from '@/lib/scroll-to-top'
+import scrollToTop from 'lib/scroll-to-top'
 import useMediaQuery from 'lib/use-media-query'
 
 export const SITE_TITLE = '✨My App'

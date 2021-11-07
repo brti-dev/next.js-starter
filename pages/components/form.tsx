@@ -1,6 +1,6 @@
-import Layout from '@/components/Layout'
-import { Form, FormGroup, TextInput } from '@/components/Form'
-import Code from '@/components/Code'
+import Layout from 'components/Layout'
+import { Form, FormGroup, TextInput } from 'components/Form'
+import Code from 'components/Code'
 
 export default function FormComponent() {
   return (

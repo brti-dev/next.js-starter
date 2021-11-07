@@ -1,6 +1,6 @@
 import React from 'react'
 
-import classes from '@/styles/components/avatar.module.scss'
+import classes from 'styles/components/avatar.module.scss'
 
 export type AvatarProps = {
   alt?: string

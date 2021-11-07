@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import classes from '@/styles/components/check-button.module.scss'
-import makeRandomString from '@/lib/make-random-string'
+import classes from 'styles/components/check-button.module.scss'
+import makeRandomString from 'lib/make-random-string'
 
 export const checkButtonContainerClass = classes.container
 

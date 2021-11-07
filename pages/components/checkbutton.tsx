@@ -1,8 +1,6 @@
-import Layout from '@/components/Layout'
-import CheckButton, {
-  checkButtonContainerClass,
-} from '@/components/CheckButton'
-import Code from '@/components/Code'
+import Layout from 'components/Layout'
+import CheckButton, { checkButtonContainerClass } from 'components/CheckButton'
+import Code from 'components/Code'
 
 export default function CheckButtonComponent() {
   return (
@@ -22,7 +20,7 @@ export default function CheckButtonComponent() {
         <pre>
           <code>
             import CheckButton, &#123;checkButtonContainerClass&#125; from
-            '@/components/CheckButton'
+            'components/CheckButton'
             <br />
             <br />
             &lt;div className=&#123;checkButtonContainerClass&#125;&gt;

@@ -1,6 +1,6 @@
-import Layout from '@/components/Layout'
-import Code from '@/components/Code'
-import useAlert from '@/lib/use-alert'
+import Layout from 'components/Layout'
+import Code from 'components/Code'
+import useAlert from 'lib/use-alert'
 
 export default function AvatarComponent() {
   const [AlertError] = useAlert({ message: 'Fuuuuuu', severity: 'error' })

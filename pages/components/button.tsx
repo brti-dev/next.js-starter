@@ -1,6 +1,6 @@
-import Layout from '@/components/Layout'
-import Button from '@/components/Button'
-import Code from '@/components/Code'
+import Layout from 'components/Layout'
+import Button from 'components/Button'
+import Code from 'components/Code'
 
 export default function ButtonComponent() {
   return (
