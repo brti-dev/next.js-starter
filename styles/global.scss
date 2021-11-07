@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'sass:math';
 @use 'breakpoint' as *;
 @use 'theme' as *;
 @use 'fonts' as *;
@@ -704,7 +705,7 @@ button,
 
   @include breakpoint(omnivision) {
     right: unset;
-    left: ($spacing-large / 2);
+    left: math.div($spacing-large, 2);
   }
 }
 

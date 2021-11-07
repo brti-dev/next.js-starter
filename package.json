@@ -21,15 +21,16 @@
         "@reach/tooltip": "^0.13.2",
         "@reach/visually-hidden": "^0.15.0",
         "date-fns": "^2.19.0",
-        "next": "10.2.0",
+        "next": "^10.2.0",
         "normalize.css": "^8.0.1",
         "react": "17.0.2",
         "react-dom": "17.0.2",
         "react-icons": "^4.2.0",
-        "sass": "^1.32.8"
+        "sass": "^1.43.4"
     },
     "devDependencies": {
         "@types/next": "^9.0.0",
+        "@types/node": "^16.11.6",
         "@types/react": "^17.0.8",
         "@types/react-dom": "^17.0.5",
         "open": "^8.0.4",
