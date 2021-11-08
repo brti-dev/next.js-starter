@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+Array [
+  <a
+    data-reach-skip-link=""
+    data-reach-skip-nav-link=""
+    href="#reach-skip-nav"
+  >
+    Skip to content
+  </a>,
+  <header
+    id="top"
+  >
+    <div
+      className="heading"
+    >
+      <h1>
+        ✨My App
+      </h1>
+      <button
+        className="button variant-icon color-default size-medium "
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 6H20V8H4zM4 11H20V13H4zM4 16H20V18H4z"
+          />
+        </svg>
+      </button>
+    </div>
+    <nav
+      aria-label="Main"
+      style={
+        Object {
+          "--current-index": -1,
+          "display": "block",
+        }
+      }
+    >
+      <ul>
+        <li>
+          <a
+            href="/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="/components"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            UI Components
+          </a>
+        </li>
+        <li>
+          <a
+            href="/foo"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            Foo
+          </a>
+        </li>
+        <li>
+          <a
+            href="/sandbox"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            Test Page
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>,
+  <div
+    data-reach-skip-nav-content=""
+    id="reach-skip-nav"
+  />,
+  <main>
+    <main>
+      <h2>
+        Hello World
+      </h2>
+      <p>
+        Voluptate proident ea aliquip laborum dolor aliqua. Lorem anim commodo cillum et nulla ex labore ea ex reprehenderit voluptate. Eiusmod ex incididunt cillum dolor cupidatat cillum adipisicing.
+      </p>
+    </main>
+  </main>,
+  <footer>
+    <nav
+      aria-label="Footer"
+    >
+      <ul>
+        <li>
+          <a
+            href="/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            href="/contact"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            Contact
+          </a>
+        </li>
+        <li>
+          <a
+            href="/"
+          >
+            Instagram
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <button
+      className="button variant-icon color-default size-medium "
+      id="scroll-top"
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6 4H18V6H6zM6.707 15.707L11 11.414 11 20 13 20 13 11.414 17.293 15.707 18.707 14.293 12 7.586 5.293 14.293z"
+        />
+      </svg>
+    </button>
+  </footer>,
+]
+`;
