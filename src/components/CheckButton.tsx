@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { memo } from 'react'
 
 import classes from 'styles/components/check-button.module.scss'
 import makeRandomString from 'lib/make-random-string'
@@ -14,7 +14,7 @@ export type CheckButtonType = {
   children: React.ReactElement | string
 }
 
-export default function CheckButton({
+function CheckButton({
   name,
   value,
   checked = false,
@@ -22,11 +22,9 @@ export default function CheckButton({
   onChange = null,
   children,
 }: CheckButtonType) {
-  const [isChecked, setChecked] = useState(checked)
   const toggleChecked = () => {
-    setChecked(!isChecked)
     if (onChange) {
-      onChange(!isChecked)
+      onChange(!checked)
     }
   }
 
@@ -40,7 +38,7 @@ export default function CheckButton({
         type="checkbox"
         name={name}
         value={value}
-        checked={isChecked}
+        checked={checked}
         id={id}
         className="visually-hidden"
         onChange={toggleChecked}
@@ -51,3 +49,5 @@ export default function CheckButton({
     </div>
   )
 }
+
+export default memo(CheckButton)
