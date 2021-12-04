@@ -10,7 +10,7 @@ export type IconButtonProps = ButtonProps & {
 
 function IconButton({ children, ...rest }: any) {
   return (
-    <Button variant="icon" {...rest}>
+    <Button icon={true} {...rest}>
       {children}
     </Button>
   )

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export type ButtonProps = {
   type?: 'button' | 'reset' | 'submit'
-  variant?: 'text' | 'contained' | 'outlined' | 'link' | 'icon' | 'close'
+  variant?: 'text' | 'contained' | 'outlined' | 'link' | 'close'
   color?:
     | 'default'
     | 'primary'
@@ -17,6 +17,7 @@ export type ButtonProps = {
   to?: string
   disabled?: boolean
   loading?: boolean
+  icon?: boolean
   children: React.ReactNode
 } & React.ComponentPropsWithRef<'button'> &
   React.ComponentPropsWithRef<'a'>
@@ -32,6 +33,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       to,
       disabled = false,
       loading = false,
+      icon = false,
       children,
       ...rest
     } = props
@@ -41,6 +43,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       `variant-${variant}`,
       `color-${color}`,
       `size-${size}`,
+      icon && 'icon',
       className && className,
     ]
 
