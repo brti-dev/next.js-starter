@@ -619,6 +619,11 @@ button,
 
       button {
         @extend .h1;
+
+        &:hover {
+          background-color: transparent;
+          transform: scale(1.1);
+        }
       }
     }
 
@@ -694,6 +699,7 @@ button,
 
   &:hover {
     transform: translateY(-10px);
+    background-color: transparent;
   }
 
   svg {
