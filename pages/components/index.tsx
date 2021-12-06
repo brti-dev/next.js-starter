@@ -10,6 +10,7 @@ const COMPONENTS = [
   'checkbutton',
   'form',
   'menu',
+  'tooltip',
 ]
 
 export default function Foo() {
