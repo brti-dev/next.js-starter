@@ -37,11 +37,11 @@ Currently configured for [static export](https://nextjs.org/docs/advanced-featur
 
 1. Add this remote to the other project repo, eg. `git remote add starter ./path_to_this_repo/next.js-starter/.git`
 2. Pull the files `git pull starter`
-3. Merge the files `git merge starter/main`
+3. Merge the files `git merge starter/main <FILES OR PATHS TO MERGE>`
 
 ## UI Component Documentation
 
-This started comes packaged with a selection of common UI components. See [UI Components documentation](https://next-js-starter-3nqkw5h5m-dr-spaceman.vercel.app/components/) for instructions on the use of a some of the components available. 
+This started comes packaged with a selection of common UI components. See [UI Components documentation](https://next-js-starter-3nqkw5h5m-dr-spaceman.vercel.app/components/) for instructions on the use of a some of the components available.
 
 ## Used to Build
 

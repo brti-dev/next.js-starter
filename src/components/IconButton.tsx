@@ -1,7 +1,4 @@
-import Tooltip from '@reach/tooltip'
-import '@reach/tooltip/styles.css'
-import { ReactHTMLElement } from 'react'
-
+import Tooltip from './Tooltip'
 import Button, { ButtonProps } from './Button'
 
 export type IconButtonProps = ButtonProps & {
