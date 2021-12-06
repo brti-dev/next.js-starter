@@ -15,12 +15,12 @@ const mapProps = (props): string => {
 }
 
 type CodeType = {
-  componentType: string
+  componentType?: string
   children?: React.ReactElement | React.ReactElement[] | string
 } & any
 
 export default function Code({
-  componentType,
+  componentType = null,
   children = null,
   ...props
 }: CodeType) {
@@ -31,6 +31,10 @@ export default function Code({
         {mapProps(props)} /&gt;
       </code>
     )
+  }
+
+  if (typeof children === 'string') {
+    return <code>{children}</code>
   }
 
   return (
