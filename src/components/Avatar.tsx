@@ -1,4 +1,5 @@
 import React from 'react'
+import Tooltip from 'components/Tooltip'
 
 import classes from 'styles/components/avatar.module.scss'
 
@@ -9,6 +10,7 @@ export type AvatarProps = {
   color?: 'default' | 'primary' | 'secondary' | 'red' | 'green'
   size?: number
   src?: string
+  tooltip?: string | boolean
 }
 
 const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
@@ -19,6 +21,7 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
     color = 'default',
     size = 40,
     src,
+    tooltip,
     ...rest
   } = props
 
@@ -28,15 +31,26 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
     className && className,
   ]
 
+  let tooltipLabel: string
+  if (!!tooltip) {
+    if (tooltip === true && alt) {
+      tooltipLabel = alt
+    } else if (typeof tooltip === 'string') {
+      tooltipLabel = tooltip as string
+    }
+  }
+
   return (
-    <div
-      className={classNames.join(' ')}
-      style={{ width: size, height: size }}
-      ref={ref}
-      {...rest}
-    >
-      {src ? <img src={src} alt={alt} /> : children}
-    </div>
+    <Tooltip label={tooltipLabel}>
+      <div
+        className={classNames.join(' ')}
+        style={{ width: size, height: size }}
+        ref={ref}
+        {...rest}
+      >
+        {src ? <img src={src} alt={alt} /> : children}
+      </div>
+    </Tooltip>
   )
 })
 

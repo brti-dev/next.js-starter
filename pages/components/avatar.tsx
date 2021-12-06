@@ -92,23 +92,32 @@ export default function AvatarComponent() {
       <h2>Avatar Group</h2>
       <p>Group together multiple avatars.</p>
       <AvatarGroup max={3}>
-        <Avatar>A</Avatar>
-        <Avatar>B</Avatar>
-        <Avatar>C</Avatar>
-        <Avatar>D</Avatar>
-        <Avatar>E</Avatar>
+        <Avatar>🧑</Avatar>
+        <Avatar>👨‍🦰</Avatar>
+        <Avatar>👩‍🦰</Avatar>
+        <Avatar>👱‍♀️</Avatar>
+        <Avatar>👴</Avatar>
       </AvatarGroup>
       <p>
         <Code>
           {`<AvatarGroup max={3}>
-  <Avatar>A</Avatar>
-  <Avatar>B</Avatar>
-  <Avatar>C</Avatar>
-  <Avatar>D</Avatar>
-  <Avatar>E</Avatar>
+  <Avatar>🧑</Avatar>
+  <Avatar>👨‍🦰</Avatar>
+  <Avatar>👩‍🦰</Avatar>
+  <Avatar>👱‍♀️</Avatar>
+  <Avatar>👴</Avatar>
 </AvatarGroup>`}
         </Code>
       </p>
+
+      <h2>Tooltip</h2>
+      <p>
+        The <code>tooltip</code> prop takes a string or boolean value. If
+        boolean, the <code>alt</code> prop is used as the tooltip label.
+      </p>
+      <Avatar tooltip alt="foo">
+        ✨
+      </Avatar>
     </Layout>
   )
 }

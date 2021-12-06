@@ -19,11 +19,7 @@ type CodeType = {
   children?: React.ReactElement | React.ReactElement[] | string
 } & any
 
-export default function Code({
-  componentType = null,
-  children = null,
-  ...props
-}: CodeType) {
+export default function Code({ componentType, children, ...props }: CodeType) {
   if (!children) {
     return (
       <code>
@@ -33,15 +29,15 @@ export default function Code({
     )
   }
 
-  if (typeof children === 'string') {
-    return <code>{children}</code>
+  if (componentType) {
+    return (
+      <code>
+        &lt;{componentType}
+        {mapProps(props)}&gt;
+        {children}&lt;/{componentType}&gt;
+      </code>
+    )
   }
 
-  return (
-    <code>
-      &lt;{componentType}
-      {mapProps(props)}&gt;
-      {children}&lt;/{componentType}&gt;
-    </code>
-  )
+  return <code>{children}</code>
 }
