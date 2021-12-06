@@ -40,4 +40,32 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   )
 })
 
+export type AvatarGroupProps = {
+  max?: number
+  children: React.ReactElement[]
+}
+
+export const AvatarGroup = ({ max, children }: AvatarGroupProps) => {
+  const numChildren = React.Children.count(children)
+  if (numChildren > max) {
+    const excess = numChildren - max
+    const childrenArray = React.Children.toArray(children)
+    const childrenOutput = childrenArray
+      .map((child, i) => {
+        if (i < max) {
+          return child
+        } else if (i === max) {
+          return <Avatar>{`+${excess}`}</Avatar>
+        } else {
+          return <></>
+        }
+      })
+      .reverse()
+
+    return <div className={classes.group}>{childrenOutput}</div>
+  }
+
+  return <div className={classes.group}>{children}</div>
+}
+
 export default Avatar

@@ -4,7 +4,7 @@
   display: flex;
   overflow: hidden;
   position: relative;
-  font-size: 1.25rem;
+  font-size: 1rem;
   align-items: center;
   flex-shrink: 0;
   line-height: 1;
@@ -34,4 +34,15 @@
 .color-green {
   color: white;
   background-color: $green;
+}
+
+.group {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+  & > * {
+    box-shadow: 0 0 0 2px var(--color-body);
+    margin-left: -4px;
+  }
 }

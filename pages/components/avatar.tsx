@@ -1,5 +1,5 @@
 import Layout from 'components/Layout'
-import Avatar from 'components/Avatar'
+import Avatar, { AvatarGroup } from 'components/Avatar'
 import Code from 'components/Code'
 
 export default function AvatarComponent() {
@@ -87,6 +87,27 @@ export default function AvatarComponent() {
           alt="Mr Banana Grabber"
           size={60}
         />
+      </p>
+
+      <h2>Avatar Group</h2>
+      <p>Group together multiple avatars.</p>
+      <AvatarGroup max={3}>
+        <Avatar>A</Avatar>
+        <Avatar>B</Avatar>
+        <Avatar>C</Avatar>
+        <Avatar>D</Avatar>
+        <Avatar>E</Avatar>
+      </AvatarGroup>
+      <p>
+        <Code>
+          {`<AvatarGroup max={3}>
+  <Avatar>A</Avatar>
+  <Avatar>B</Avatar>
+  <Avatar>C</Avatar>
+  <Avatar>D</Avatar>
+  <Avatar>E</Avatar>
+</AvatarGroup>`}
+        </Code>
       </p>
     </Layout>
   )
