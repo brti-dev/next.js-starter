@@ -1,6 +1,6 @@
 import React from 'react'
-import Tooltip from 'components/Tooltip'
 
+import Tooltip from 'components/Tooltip'
 import classes from 'styles/components/avatar.module.scss'
 
 export type AvatarProps = {
