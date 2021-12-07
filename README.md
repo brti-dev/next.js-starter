@@ -37,7 +37,7 @@ Currently configured for [static export](https://nextjs.org/docs/advanced-featur
 
 1. Add this remote to the other project repo, eg. `git remote add starter ./path_to_this_repo/next.js-starter/.git`
 2. Pull the files `git pull starter`
-3. Merge the files `git merge starter/main <FILES OR PATHS TO MERGE>`
+3. Merge the files: Merge everything `git merge starter/main` OR a selection `git checkout starter/main <FILES OR PATHS>`
 
 ## UI Component Documentation
 
