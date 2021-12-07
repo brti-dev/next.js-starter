@@ -76,7 +76,9 @@ export const AvatarGroup = ({ max, children }: AvatarGroupProps) => {
       })
       .reverse()
 
-    return <div className={classes.group}>{childrenOutput}</div>
+    const classNames = [classes.group, classes.groupMax]
+
+    return <div className={classNames.join(' ')}>{childrenOutput}</div>
   }
 
   return <div className={classes.group}>{children}</div>

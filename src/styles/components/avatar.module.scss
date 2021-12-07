@@ -38,11 +38,14 @@
 
 .group {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
 
   & > * {
     box-shadow: 0 0 0 2px var(--color-body);
     margin-left: -4px;
   }
+}
+
+.groupMax {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
