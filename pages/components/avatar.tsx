@@ -51,6 +51,10 @@ export default function AvatarComponent() {
       </p>
 
       <h2>Sizes</h2>
+      <p>
+        Input a number into the <code>size</code> prop to change the diameter of
+        the avatar. The default value is <code>40</code>.
+      </p>
       <div style={{ display: 'flex', gap: '1em' }}>
         <Avatar
           src="https://www.gravatar.com/avatar/4f7c491251c66a5841858a93c95aaa91"
@@ -68,25 +72,11 @@ export default function AvatarComponent() {
         />
       </div>
       <p>
-        <Code
-          componentType="Avatar"
-          src="/img/avatar.png"
-          alt="Mr Banana Grabber"
-          size={20}
-        />
+        <Code componentType="Avatar" size={20} />
         <br />
-        <Code
-          componentType="Avatar"
-          src="/img/avatar.png"
-          alt="Mr Banana Grabber"
-        />
+        <Code componentType="Avatar" />
         <br />
-        <Code
-          componentType="Avatar"
-          src="/img/avatar.png"
-          alt="Mr Banana Grabber"
-          size={60}
-        />
+        <Code componentType="Avatar" size={60} />
       </p>
 
       <h2>Avatar Group</h2>
@@ -108,6 +98,23 @@ export default function AvatarComponent() {
   <Avatar>👴</Avatar>
 </AvatarGroup>`}
         </Code>
+      </p>
+
+      <h3>Total avatars</h3>
+      <p>
+        Use the <code>total</code> prop to control the total number of avatars
+      </p>
+      <AvatarGroup total={13}>
+        <Avatar>🙈</Avatar>
+        <Avatar>🙉</Avatar>
+        <Avatar>🙊</Avatar>
+      </AvatarGroup>
+      <p>
+        <Code>{`<AvatarGroup total={13}>
+  <Avatar>🙈</Avatar>
+  <Avatar>🙉</Avatar>
+  <Avatar>🙊</Avatar>
+</AvatarGroup>`}</Code>
       </p>
 
       <h2>Tooltip</h2>

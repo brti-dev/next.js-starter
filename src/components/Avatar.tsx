@@ -40,41 +40,49 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
     }
   }
 
-  return (
-    <Tooltip label={tooltipLabel}>
-      <div
-        className={classNames.join(' ')}
-        style={{ width: size, height: size }}
-        ref={ref}
-        {...rest}
-      >
-        {src ? <img src={src} alt={alt} /> : children}
-      </div>
-    </Tooltip>
+  const avatarOutput = (
+    <div
+      className={classNames.join(' ')}
+      style={{ width: size, height: size }}
+      ref={ref}
+      {...rest}
+    >
+      {src ? <img src={src} alt={alt} /> : children}
+    </div>
+  )
+
+  return tooltipLabel ? (
+    <Tooltip label={tooltipLabel}>{avatarOutput}</Tooltip>
+  ) : (
+    <>{avatarOutput}</>
   )
 })
 
 export type AvatarGroupProps = {
   max?: number
+  total?: number
   children: React.ReactElement[]
 }
 
-export const AvatarGroup = ({ max, children }: AvatarGroupProps) => {
+export const AvatarGroup = ({ max, total, children }: AvatarGroupProps) => {
   const numChildren = React.Children.count(children)
-  if (numChildren > max) {
-    const excess = numChildren - max
+  if (numChildren > max || numChildren < total) {
+    const excess = max ? numChildren - max : total - numChildren
+    const mapToIndex = max ?? numChildren
     const childrenArray = React.Children.toArray(children)
     const childrenOutput = childrenArray
       .map((child, i) => {
-        if (i < max) {
+        if (i < mapToIndex) {
           return child
-        } else if (i === max) {
-          return <Avatar>{`+${excess}`}</Avatar>
         } else {
-          return <></>
+          return null
         }
       })
+      .filter(child => !!child)
       .reverse()
+    childrenOutput.unshift(
+      <Avatar className={classes.excess}>{`+${excess}`}</Avatar>
+    )
 
     const classNames = [classes.group, classes.groupMax]
 
