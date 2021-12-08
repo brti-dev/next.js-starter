@@ -89,7 +89,11 @@ export const AvatarGroup = ({ max, total, children }: AvatarGroupProps) => {
     return <div className={classNames.join(' ')}>{childrenOutput}</div>
   }
 
-  return <div className={classes.group}>{children}</div>
+  return (
+    <div className={classes.group}>
+      {React.Children.toArray(children).reverse()}
+    </div>
+  )
 }
 
 export default Avatar
