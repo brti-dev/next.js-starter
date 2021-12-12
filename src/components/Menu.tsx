@@ -13,9 +13,9 @@ const NewMenuButton = ({ children, ...props }) => (
   <MenuButton
     as={Button}
     style={{
-      appearance: 'menulist-button',
-      WebkitAppearance: 'menulist-button',
-      MozAppearance: 'menulist-button',
+      appearance: 'none',
+      WebkitAppearance: 'none',
+      MozAppearance: 'none',
     }}
     {...props}
   >
