@@ -7,14 +7,14 @@ import {
   ChangeEvent,
 } from 'react'
 
-import classes from 'styles/components/form.module.scss'
+import classes from './Form.module.scss'
 
-export type Form = {
+export type FormProps = {
   children: React.ReactElement
   className?: string
 } & React.ComponentPropsWithoutRef<'form'>
 
-export function Form({ children, className = null, ...rest }) {
+export function Form({ children, className = null, ...rest }: FormProps) {
   const classNameString = [classes.form, className].filter(i => !!i).join(' ')
 
   return (

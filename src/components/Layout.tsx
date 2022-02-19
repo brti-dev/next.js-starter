@@ -10,7 +10,7 @@ import {
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 
-import IconButton from './IconButton'
+import { IconButton } from 'components/Button'
 import scrollToTop from 'lib/scroll-to-top'
 import useMediaQuery from 'lib/use-media-query'
 

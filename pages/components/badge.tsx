@@ -2,7 +2,7 @@ import Layout from 'components/Layout'
 import Badge from 'components/Badge'
 import Avatar from 'components/Avatar'
 import Code from 'components/Code'
-import IconButton from 'components/IconButton'
+import { IconButton } from 'components/Button'
 import { BiBell as BellIcon } from 'react-icons/bi'
 
 const COLORS = ['primary', 'secondary', 'red', 'green', 'dark', 'light']

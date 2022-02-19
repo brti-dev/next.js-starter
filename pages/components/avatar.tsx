@@ -1,6 +1,7 @@
 import Layout from 'components/Layout'
 import Avatar, { AvatarGroup } from 'components/Avatar'
 import Code from 'components/Code'
+import Badge from 'components/Badge'
 
 export default function AvatarComponent() {
   return (
@@ -125,6 +126,24 @@ export default function AvatarComponent() {
       <Avatar tooltip alt="foo">
         ✨
       </Avatar>
+
+      <h2>With badge</h2>
+      <div style={{ display: 'flex', gap: '1em' }}>
+        <Badge variant="dot" color="red">
+          <Avatar color="primary">A</Avatar>
+        </Badge>
+        <Badge content={<Avatar size={20}>💩</Avatar>}>
+          <Avatar color="primary">B</Avatar>
+        </Badge>
+      </div>
+      <p>
+        <Code>{`<Badge variant="dot" color="red">
+  <Avatar>A</Avatar>
+</Badge>
+<Badge content={<Avatar size={20}>💩</Avatar>}>
+  <Avatar>B</Avatar>
+</Badge>`}</Code>
+      </p>
     </Layout>
   )
 }

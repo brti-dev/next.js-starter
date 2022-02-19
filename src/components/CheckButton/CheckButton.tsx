@@ -1,11 +1,11 @@
 import { memo } from 'react'
 
-import classes from 'styles/components/check-button.module.scss'
+import classes from './CheckButton.module.scss'
 import makeRandomString from 'lib/make-random-string'
 
 export const checkButtonContainerClass = classes.container
 
-export type CheckButtonType = {
+export type CheckButtonProps = {
   name: string
   value: string
   checked?: boolean
@@ -21,7 +21,7 @@ function CheckButton({
   id,
   onChange = null,
   children,
-}: CheckButtonType) {
+}: CheckButtonProps) {
   const toggleChecked = () => {
     if (onChange) {
       onChange(!checked)

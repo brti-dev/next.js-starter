@@ -1,4 +1,4 @@
-@use '../theme' as *;
+@use 'styles/theme' as *;
 
 .avatar {
   box-sizing: border-box;
@@ -7,7 +7,7 @@
   display: flex;
   overflow: hidden;
   position: relative;
-  font-size: 1.2rem;
+  font-size: 1rem;
   align-items: center;
   flex-shrink: 0;
   line-height: 1;

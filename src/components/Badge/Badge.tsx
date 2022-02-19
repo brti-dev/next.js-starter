@@ -1,4 +1,5 @@
-import classes from 'styles/components/badge.module.scss'
+import React from 'react'
+import classes from './Badge.module.scss'
 
 type BadgePropsBase = {
   children: React.ReactNode
@@ -16,12 +17,12 @@ type BadgePropsBase = {
   showZero?: boolean
   size?: 'small' | 'medium' | 'large' | number
   variant?: 'default' | 'dot' | string
-}
+} & React.ComponentPropsWithoutRef<'span'>
 type BadgePropsContent = BadgePropsBase & {
-  content: string | number | null
+  content: string | number | null | React.ReactElement
 }
 type BadgePropsDot = BadgePropsBase & {
-  content?: string | number | null
+  content?: string | number | null | React.ReactElement
   variant: 'dot'
 }
 
@@ -57,10 +58,16 @@ function Badge(props: BadgeProps) {
     classNames.push('visually-hidden')
   }
 
+  if (React.isValidElement(content)) {
+    classNames.push(classes.componentAsBadge)
+  }
+
   return (
     <span className={classes.container}>
       {children}
-      <span className={classNames.join(' ')}>{contentOutput}</span>
+      <span className={classNames.join(' ')} {...rest}>
+        {contentOutput}
+      </span>
     </span>
   )
 }

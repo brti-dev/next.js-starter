@@ -1,5 +1,5 @@
-import Tooltip from './Tooltip'
-import Button, { ButtonProps } from './Button'
+import Tooltip from '../Tooltip'
+import Button, { ButtonProps } from '.'
 
 export type IconButtonProps = ButtonProps & {
   tooltip?: string
