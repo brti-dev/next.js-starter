@@ -19,7 +19,7 @@ Array [
         ✨My App
       </h1>
       <button
-        className="button variant-icon color-default size-medium "
+        className="button variant-text color-default size-medium icon "
         onClick={[Function]}
         type="button"
       >
@@ -139,7 +139,7 @@ Array [
       </ul>
     </nav>
     <button
-      className="button variant-icon color-default size-medium "
+      className="button variant-text color-default size-medium icon "
       id="scroll-top"
       onClick={[Function]}
       type="button"
