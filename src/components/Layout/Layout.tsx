@@ -10,36 +10,43 @@ import {
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 
-import { IconButton } from 'components/Button'
+import * as config from '../../../app.config.js'
 import scrollToTop from 'lib/scroll-to-top'
 import useMediaQuery from 'lib/use-media-query'
+import { IconButton } from 'components/Button'
+import classes from './Layout.module.scss'
 
-export const SITE_TITLE = '✨My App'
+type OptionalChildren = {
+  children?: React.ReactChild | React.ReactChild[]
+}
 
-// Used to build site navigation
-const PAGES = [
-  { link: '/', title: 'Home' },
-  { link: '/components', title: 'UI Components' },
-  { link: '/foo', title: 'Foo' },
-  { link: '/sandbox', title: 'Test Page' },
-]
+type RequiredChildren = {
+  children: React.ReactChild | React.ReactChild[]
+}
 
-function Header() {
+export type LayoutProps = {
+  title?: string
+} & RequiredChildren
+
+export function Header({ children }: OptionalChildren) {
   const { pathname, query } = useRouter()
   const pathnameRoot = pathname.split('/', 2).join('/')
 
+  const isCurrentPage = (link: string) => link === pathnameRoot
+
   const isScreenMobile = useMediaQuery('(max-width: 680px)')
 
-  const currentPageIndex = PAGES.findIndex(page => page.link === pathnameRoot)
-  const isCurrentPage = (link: string) => link === pathnameRoot
+  const currentPageIndex = config.pages.findIndex(
+    page => page.link === pathnameRoot
+  )
 
   const [menu, setMenu] = useState(isScreenMobile)
   const handleOpenMenu = () => setMenu(!menu)
 
   return (
-    <header id="top">
+    <header id="top" className={classes.header}>
       <div className="heading">
-        <h1>{SITE_TITLE}</h1>
+        <h1>{config.siteTitle}</h1>
         {isScreenMobile && (
           <IconButton onClick={handleOpenMenu}>
             <MenuIcon />
@@ -56,7 +63,7 @@ function Header() {
         aria-label="Main"
       >
         <ul>
-          {PAGES.map(({ link, title: pageTitle }) => (
+          {config.pages.map(({ link, title: pageTitle }) => (
             <li
               key={link}
               className={isCurrentPage(link) ? 'current' : undefined}
@@ -66,34 +73,39 @@ function Header() {
           ))}
         </ul>
       </nav>
+      {children}
     </header>
   )
 }
 
-export function Footer() {
+export function Main({ children }: RequiredChildren) {
+  return <main className={classes.main}>{children}</main>
+}
+
+export function Footer({ children }: OptionalChildren) {
   return (
-    <footer>
+    <footer className={classes.footer}>
       <nav aria-label="Footer">
         <ul>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
-          <li>
-            <a href="/">Instagram</a>
-          </li>
+          {config.pages.map(({ link, title: pageTitle }) => (
+            <li key={link}>
+              <Link href={link}>{pageTitle}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
-      <IconButton id="scroll-top" onClick={scrollToTop}>
+      <IconButton className={classes.scrollToTop} onClick={scrollToTop}>
         <ArrowTopIcon />
       </IconButton>
+      {children}
     </footer>
   )
 }
 
-export default function Layout({ title = SITE_TITLE, children }) {
+export default function Layout({
+  title = config.siteTitle,
+  children,
+}: LayoutProps) {
   return (
     <>
       <Head>
@@ -108,16 +120,16 @@ export default function Layout({ title = SITE_TITLE, children }) {
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
-            SITE_TITLE
+            config.siteTitle
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
-        <meta name="og:title" content={SITE_TITLE} />
+        <meta name="og:title" content={config.siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <SkipNavLink />
       <Header />
       <SkipNavContent />
-      <main>{children}</main>
+      <Main>{children}</Main>
       <Footer />
     </>
   )
