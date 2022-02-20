@@ -10,6 +10,7 @@ Array [
     Skip to content
   </a>,
   <header
+    className="header"
     id="top"
   >
     <div
@@ -96,7 +97,9 @@ Array [
     data-reach-skip-nav-content=""
     id="reach-skip-nav"
   />,
-  <main>
+  <main
+    className="main"
+  >
     <main>
       <h2>
         Hello World
@@ -106,7 +109,9 @@ Array [
       </p>
     </main>
   </main>,
-  <footer>
+  <footer
+    className="footer"
+  >
     <nav
       aria-label="Footer"
     >
@@ -122,25 +127,35 @@ Array [
         </li>
         <li>
           <a
-            href="/contact"
+            href="/components"
             onClick={[Function]}
             onMouseEnter={[Function]}
           >
-            Contact
+            UI Components
           </a>
         </li>
         <li>
           <a
-            href="/"
+            href="/foo"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
           >
-            Instagram
+            Foo
+          </a>
+        </li>
+        <li>
+          <a
+            href="/sandbox"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            Test Page
           </a>
         </li>
       </ul>
     </nav>
     <button
-      className="button variant-text color-default size-medium icon "
-      id="scroll-top"
+      className="button variant-text color-default size-medium icon scrollToTop"
       onClick={[Function]}
       type="button"
     >
