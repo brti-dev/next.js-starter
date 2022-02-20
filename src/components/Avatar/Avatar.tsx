@@ -4,8 +4,8 @@ import Tooltip from 'components/Tooltip'
 import classes from './Avatar.module.scss'
 
 export type AvatarProps = {
-  alt?: string
-  children?: React.ReactNode
+  alt: string
+  children?: React.ReactChild
   className?: string
   color?: 'default' | 'primary' | 'secondary' | 'red' | 'green'
   size?: number
@@ -45,6 +45,8 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
       className={classNames.join(' ')}
       style={{ width: size, height: size }}
       ref={ref}
+      role="img"
+      aria-label={alt !== children ? alt : undefined}
       {...rest}
     >
       {src ? <img src={src} alt={alt} /> : children}
@@ -61,7 +63,7 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
 export type AvatarGroupProps = {
   max?: number
   total?: number
-  children: React.ReactElement[]
+  children: React.ReactChild[]
 }
 
 export const AvatarGroup = ({ max, total, children }: AvatarGroupProps) => {
@@ -81,7 +83,11 @@ export const AvatarGroup = ({ max, total, children }: AvatarGroupProps) => {
       .filter(child => !!child)
       .reverse()
     childrenOutput.unshift(
-      <Avatar className={classes.excess}>{`+${excess}`}</Avatar>
+      <Avatar
+        alt={`There are ${excess} hidden avatars`}
+        className={classes.excess}
+        key="excess"
+      >{`+${excess}`}</Avatar>
     )
 
     const classNames = [classes.group, classes.groupMax]

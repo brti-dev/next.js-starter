@@ -27,9 +27,19 @@ export default function AvatarComponent() {
 
       <h2>Monogram Avatar</h2>
       <div style={{ display: 'flex', gap: '1em' }}>
-        <Avatar>A</Avatar> <Avatar color="primary">BC</Avatar>{' '}
-        <Avatar color="secondary">DEF</Avatar> <Avatar color="green">G</Avatar>{' '}
-        <Avatar color="red">R</Avatar>
+        <Avatar alt="Regular unstyled avatar">A</Avatar>{' '}
+        <Avatar color="primary" alt="Primary color avatar">
+          BC
+        </Avatar>{' '}
+        <Avatar color="secondary" alt="Secondary color avatar">
+          DEF
+        </Avatar>{' '}
+        <Avatar color="green" alt="Green avatar">
+          G
+        </Avatar>{' '}
+        <Avatar color="red" alt="Red avatar">
+          R
+        </Avatar>
       </div>
       <p>
         <Code componentType="Avatar">A</Code>
@@ -83,11 +93,11 @@ export default function AvatarComponent() {
       <h2>Avatar Group</h2>
       <p>Group together multiple avatars.</p>
       <AvatarGroup max={3}>
-        <Avatar>🧑</Avatar>
-        <Avatar>👨‍🦰</Avatar>
-        <Avatar>👩‍🦰</Avatar>
-        <Avatar>👱‍♀️</Avatar>
-        <Avatar>👴</Avatar>
+        <Avatar alt="head">🧑</Avatar>
+        <Avatar alt="mustache head">👨‍🦰</Avatar>
+        <Avatar alt="lady head">👩‍🦰</Avatar>
+        <Avatar alt="girl head">👱‍♀️</Avatar>
+        <Avatar alt="? head">👴</Avatar>
       </AvatarGroup>
       <p>
         <Code>
@@ -106,9 +116,9 @@ export default function AvatarComponent() {
         Use the <code>total</code> prop to control the total number of avatars
       </p>
       <AvatarGroup total={13}>
-        <Avatar>🙈</Avatar>
-        <Avatar>🙉</Avatar>
-        <Avatar>🙊</Avatar>
+        <Avatar alt="monkey">🙈</Avatar>
+        <Avatar alt="monkey">🙉</Avatar>
+        <Avatar alt="monkey">🙊</Avatar>
       </AvatarGroup>
       <p>
         <Code>{`<AvatarGroup total={13}>
@@ -130,10 +140,20 @@ export default function AvatarComponent() {
       <h2>With badge</h2>
       <div style={{ display: 'flex', gap: '1em' }}>
         <Badge variant="dot" color="red">
-          <Avatar color="primary">A</Avatar>
+          <Avatar color="primary" alt="avatar with badge">
+            A
+          </Avatar>
         </Badge>
-        <Badge content={<Avatar size={20}>💩</Avatar>}>
-          <Avatar color="primary">B</Avatar>
+        <Badge
+          content={
+            <Avatar size={20} alt="poo">
+              💩
+            </Avatar>
+          }
+        >
+          <Avatar color="primary" alt="Avatar with poo badge">
+            B
+          </Avatar>
         </Badge>
       </div>
       <p>
