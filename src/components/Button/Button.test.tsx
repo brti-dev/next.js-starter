@@ -1,15 +1,12 @@
-import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
+
+import { render, screen } from '../../../test-utils'
 import Button from './Button'
 
 test('shows spinner & disabled if loading', () => {
-  const { getByTestId } = render(
-    <Button data-testid="btn" loading>
-      Loading
-    </Button>
-  )
+  const { getByText } = render(<Button loading>Loading</Button>)
 
-  const expBtn = expect(getByTestId('btn'))
+  const expBtn = expect(getByText('Loading'))
   expBtn.toHaveAttribute('data-loading')
   expBtn.toHaveAttribute('disabled')
 })
@@ -28,11 +25,9 @@ test('has the proper aria attributes', () => {
 })
 
 test('has the proper `type` attribute', () => {
-  const { getByTestId, rerender } = render(
-    <Button data-testid="btn">button</Button>
-  )
+  const { getByRole, rerender } = render(<Button>button</Button>)
 
-  expect(getByTestId('btn')).toHaveAttribute('type', 'button')
+  expect(getByRole('button')).toHaveAttribute('type', 'button')
 
   rerender(
     <Button data-testid="btn" type="submit">
@@ -40,7 +35,7 @@ test('has the proper `type` attribute', () => {
     </Button>
   )
 
-  expect(getByTestId('btn')).toHaveAttribute('type', 'submit')
+  expect(getByRole('button')).toHaveAttribute('type', 'submit')
 
   rerender(
     <Button data-testid="btn" type="reset">
@@ -48,7 +43,7 @@ test('has the proper `type` attribute', () => {
     </Button>
   )
 
-  expect(getByTestId('btn')).toHaveAttribute('type', 'reset')
+  expect(getByRole('button')).toHaveAttribute('type', 'reset')
 })
 
 test('should be disabled', () => {
