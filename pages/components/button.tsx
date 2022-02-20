@@ -1,5 +1,6 @@
 import Layout from 'components/Layout'
-import Button from 'components/Button'
+import Button, { IconButton } from 'components/Button'
+import { BiBell as BellIcon } from 'react-icons/bi'
 import Code from 'components/Code'
 
 export default function ButtonComponent() {
@@ -59,13 +60,38 @@ export default function ButtonComponent() {
         </Code>
       </p>
       <h2>Anchor Button</h2>
-      <Button to="/home">Home</Button>
+      <Button to="/">Home</Button>
       <p>
         Add <code>to</code> prop to create a button-like link.
       </p>
-      <Code componentType="Button" to="/home">
+      <Code componentType="Button" to="/">
         Home
       </Code>
+      <h2>Icon Button</h2>
+      <div style={{ display: 'flex', gap: '0.5em' }}>
+        <IconButton>
+          <BellIcon />
+        </IconButton>
+        <IconButton variant="outlined">
+          <BellIcon />
+        </IconButton>
+        <IconButton variant="contained">
+          <BellIcon />
+        </IconButton>
+      </div>
+      <p>
+        <Code componentType="IconButton">
+          <Code componentType="BellIcon" />
+        </Code>
+        <br />
+        <Code componentType="IconButton" variant="outlined">
+          <Code componentType="BellIcon" />
+        </Code>
+        <br />
+        <Code componentType="IconButton" variant="contained">
+          <Code componentType="BellIcon" />
+        </Code>
+      </p>
     </Layout>
   )
 }
