@@ -2,10 +2,10 @@
  * @jest-environment jsdom
  */
 
-import { render, screen } from '@testing-library/react'
 import Home from '../pages/index'
 import '@testing-library/jest-dom'
 
+import { render, screen } from '../test-utils'
 import * as config from '../app.config'
 import useMediaQuery from '../src/lib/use-media-query'
 
