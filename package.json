@@ -1,7 +1,7 @@
 {
   "name": "next.js-starter",
   "version": "0.1.1",
-  "description": "Bootrap a new Next.js app",
+  "description": "Bootstrap a new Next.js app",
   "private": false,
   "license": "ISC",
   "main": "pages/_app.js",

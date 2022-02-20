@@ -6,7 +6,7 @@ import { render, screen } from '@testing-library/react'
 import Home from '../pages/index'
 import '@testing-library/jest-dom'
 
-import { SITE_TITLE } from '../src/components/Layout'
+import * as config from '../app.config'
 import useMediaQuery from '../src/lib/use-media-query'
 
 test('two plus two is four', () => {
@@ -41,7 +41,7 @@ describe('Home', () => {
     render(<Home />)
 
     const heading = screen.getByRole('heading', {
-      name: SITE_TITLE,
+      name: config.siteTitle,
     })
 
     expect(heading).toBeInTheDocument()
