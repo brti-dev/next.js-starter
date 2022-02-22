@@ -10,7 +10,7 @@ import {
 import classes from './Form.module.scss'
 
 export type FormProps = {
-  children: React.ReactElement
+  children: React.ReactChild | React.ReactChild[]
   className?: string
 } & React.ComponentPropsWithoutRef<'form'>
 
@@ -26,7 +26,7 @@ export function Form({ children, className = null, ...rest }: FormProps) {
 
 export type FormGroupProps = {
   label: string
-  input: React.ReactElement
+  input: React.ReactChild
   className?: string
   error?: boolean
   helperText?: string
