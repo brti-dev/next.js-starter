@@ -14,7 +14,7 @@
     margin-bottom: 0.5em;
   }
 
-  p {
+  [role='note'] {
     margin: 0.5em 0 0;
     font-size: smaller;
   }
@@ -25,12 +25,14 @@
     box-shadow: $red 0 0 0 3px !important;
   }
 
-  p {
+  [role='note'] {
     color: $red;
   }
 }
 
 .submitRow {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: row-reverse;
   gap: 1em;

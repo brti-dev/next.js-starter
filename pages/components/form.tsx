@@ -11,6 +11,10 @@ export default function FormComponent() {
           label="Name"
           input={<TextInput name="name" placeholder="Your name" />}
         />
+        <FormGroup
+          label="Feedback"
+          input={<TextInput name="feedback" multiline={true} rows={2} />}
+        />
       </Form>
       <p>
         <Code

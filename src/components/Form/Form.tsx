@@ -26,7 +26,7 @@ export function Form({ children, className = null, ...rest }: FormProps) {
 
 export type FormGroupProps = {
   label: string
-  input: React.ReactChild
+  input: React.ReactElement<HTMLInputElement>
   className?: string
   error?: boolean
   helperText?: string
@@ -48,7 +48,7 @@ export function FormGroup({
     <div className={classNameString}>
       <label htmlFor={id}>{label}</label>
       {cloneElement(input, { id })}
-      {helperText && <p>{helperText}</p>}
+      {helperText && <div role="note">{helperText}</div>}
     </div>
   )
 }
@@ -62,8 +62,8 @@ function unformat(text: string) {
 }
 
 export type TextInputProps = {
-  type?: string
-  name?: string
+  type?: 'text' | 'date' | 'email' | 'number' | 'password' | 'tel' | 'url'
+  name: string
   value?: string
   multiline?: boolean
   rows?: number
@@ -129,7 +129,7 @@ export const TextInput = forwardRef<
 })
 
 export function SubmitRow({ children }) {
-  return <div className={classes.submitRow}>{children}</div>
+  return <menu className={classes.submitRow}>{children}</menu>
 }
 
 type FormStateLoading = {
