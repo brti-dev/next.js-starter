@@ -228,6 +228,7 @@ button,
 .button {
   --line-height: 2.2em;
 
+  box-sizing: border-box;
   outline: none;
   line-height: var(--line-height);
   padding: 0 0.75rem;
