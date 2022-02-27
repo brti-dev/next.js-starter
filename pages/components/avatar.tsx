@@ -1,7 +1,18 @@
 import Layout from 'components/Layout'
 import Avatar, { AvatarGroup } from 'components/Avatar'
-import Code from 'components/Code'
+import Code, { CodeBlock } from 'components/Code'
 import Badge from 'components/Badge'
+
+const examples = {
+  image: (
+    <Avatar
+      src="https://www.gravatar.com/avatar/4f7c491251c66a5841858a93c95aaa91"
+      alt="Mr Banana Grabber"
+    >
+      MBG
+    </Avatar>
+  ),
+}
 
 export default function AvatarComponent() {
   return (
@@ -9,21 +20,14 @@ export default function AvatarComponent() {
       <h1>Avatar</h1>
       <p>Graphic representative of users.</p>
       <h2>Image Avatar</h2>
-      <Avatar
-        src="https://www.gravatar.com/avatar/4f7c491251c66a5841858a93c95aaa91"
-        alt="Mr Banana Grabber"
-      >
-        MBG
-      </Avatar>
-      <p>
+      {examples.image}
+      <CodeBlock>
         <Code
           componentType="Avatar"
+          {...examples.image.props}
           src="/img/avatar.png"
-          alt="Mr Banana Grabber"
-        >
-          MBG
-        </Code>
-      </p>
+        />
+      </CodeBlock>
 
       <h2>Monogram Avatar</h2>
       <div style={{ display: 'flex', gap: '1em' }}>
@@ -41,25 +45,13 @@ export default function AvatarComponent() {
           R
         </Avatar>
       </div>
-      <p>
-        <Code componentType="Avatar">A</Code>
-        <br />
-        <Code componentType="Avatar" color="primary">
-          BC
-        </Code>
-        <br />
-        <Code componentType="Avatar" color="secondary">
-          DEF
-        </Code>
-        <br />
-        <Code componentType="Avatar" color="green">
-          G
-        </Code>
-        <br />
-        <Code componentType="Avatar" color="red">
-          R
-        </Code>
-      </p>
+      <CodeBlock>
+        <Code>{`<Avatar>A</Avatar>
+<Avatar color="primary">BC</Avatar>
+<Avatar color="secondary">DEF</Avatar>
+<Avatar color="green">G</Avatar>
+<Avatar color="red">R</Avatar>`}</Code>
+      </CodeBlock>
 
       <h2>Sizes</h2>
       <p>
@@ -82,13 +74,11 @@ export default function AvatarComponent() {
           size={60}
         />
       </div>
-      <p>
-        <Code componentType="Avatar" size={20} />
-        <br />
-        <Code componentType="Avatar" />
-        <br />
-        <Code componentType="Avatar" size={60} />
-      </p>
+      <CodeBlock>
+        <Code>{`<Avatar size={20} />
+<Avatar />
+<Avatar size={60} />`}</Code>
+      </CodeBlock>
 
       <h2>Avatar Group</h2>
       <p>Group together multiple avatars.</p>
@@ -99,7 +89,7 @@ export default function AvatarComponent() {
         <Avatar alt="girl head">👱‍♀️</Avatar>
         <Avatar alt="? head">👴</Avatar>
       </AvatarGroup>
-      <p>
+      <CodeBlock>
         <Code>
           {`<AvatarGroup max={3}>
   <Avatar>🧑</Avatar>
@@ -109,7 +99,7 @@ export default function AvatarComponent() {
   <Avatar>👴</Avatar>
 </AvatarGroup>`}
         </Code>
-      </p>
+      </CodeBlock>
 
       <h3>Total avatars</h3>
       <p>
@@ -120,29 +110,18 @@ export default function AvatarComponent() {
         <Avatar alt="monkey">🙉</Avatar>
         <Avatar alt="monkey">🙊</Avatar>
       </AvatarGroup>
-      <p>
+      <CodeBlock>
         <Code>{`<AvatarGroup total={13}>
   <Avatar>🙈</Avatar>
   <Avatar>🙉</Avatar>
   <Avatar>🙊</Avatar>
 </AvatarGroup>`}</Code>
-      </p>
+      </CodeBlock>
 
-      <h2>Tooltip</h2>
-      <p>
-        The <code>tooltip</code> prop takes a string or boolean value. If
-        boolean, the <code>alt</code> prop is used as the tooltip label.
-      </p>
-      <Avatar tooltip alt="foo">
-        ✨
-      </Avatar>
-
-      <h2>With badge</h2>
+      <h2>With Badge</h2>
       <div style={{ display: 'flex', gap: '1em' }}>
         <Badge variant="dot" color="red">
-          <Avatar color="primary" alt="avatar with badge">
-            A
-          </Avatar>
+          <Avatar alt="avatar with badge">A</Avatar>
         </Badge>
         <Badge
           content={
@@ -151,18 +130,39 @@ export default function AvatarComponent() {
             </Avatar>
           }
         >
-          <Avatar color="primary" alt="Avatar with poo badge">
-            B
-          </Avatar>
+          <Avatar alt="Avatar with poo badge">B</Avatar>
         </Badge>
       </div>
-      <p>
+      <CodeBlock>
         <Code>{`<Badge variant="dot" color="red">
   <Avatar>A</Avatar>
 </Badge>
 <Badge content={<Avatar size={20}>💩</Avatar>}>
   <Avatar>B</Avatar>
 </Badge>`}</Code>
+      </CodeBlock>
+
+      <h2>Other Props</h2>
+
+      <h3>Tooltip</h3>
+      <p>
+        <Code>{`tooltip={string | boolean}`}</Code>
+      </p>
+      <p>
+        The <code>tooltip</code> prop takes a string or boolean value. If
+        boolean, the <code>alt</code> prop is used as the tooltip label.
+      </p>
+      <Avatar tooltip alt="foo">
+        ✨
+      </Avatar>
+
+      <h3>Overload Element</h3>
+      <p>
+        <Code>{`as={string | React Element}`}</Code>
+      </p>
+      <p>
+        Use the <code>as</code> prop to override the component root node with an
+        HTML element (<code>string</code>) or another React Element.
       </p>
     </Layout>
   )

@@ -58,5 +58,29 @@ test('should indicate total in a group', () => {
     </AvatarGroup>
   )
 
-  expect(getByText('+98')).toBeTruthy()
+  expect(getByText('+98')).toBeInTheDocument()
+})
+
+test('should filter non-valid (non-Avatar) children in a group', () => {
+  const { getByText } = render(
+    <AvatarGroup total={100}>
+      <Avatar alt="foo">F</Avatar>
+      <Avatar alt="bar">B</Avatar>
+      <div>fff</div>
+      <span>ddd</span>
+    </AvatarGroup>
+  )
+
+  expect(getByText('+98')).toBeInTheDocument()
+})
+
+test('should render another component wrapper when given `component` prop', () => {
+  const Foo = ({ foo, children }) => <div data-foo={foo}>{children}</div>
+  const { getByText } = render(
+    <Avatar alt="Barry Lyndon" as={Foo} foo="foo">
+      BL
+    </Avatar>
+  )
+
+  expect(getByText('BL')).toHaveAttribute('data-foo', 'foo')
 })
