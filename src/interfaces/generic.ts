@@ -1,14 +1,7 @@
 /**
- * Make all properties optional
+ * Remove properties `K` from `T`.
+ * Distributive for union types.
  */
-export type Partial<T> = {
-  [Key in keyof T]?: T[Key]
-}
-
-/**
- * Make all properties required
- */
-export type Required<T> = {
-  //  -? removes optional modifier
-  [Key in keyof T]-?: T[Key]
-}
+export type DistributiveOmit<T, K extends keyof any> = T extends any
+  ? Omit<T, K>
+  : never
