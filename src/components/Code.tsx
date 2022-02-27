@@ -16,13 +16,35 @@ const mapProps = (props): string => {
 
 type CodeType = {
   componentType?: string
-  children?: React.ReactElement | React.ReactElement[] | string
+  language?: string
+  children?: React.ReactNode
 } & any
 
-export default function Code({ componentType, children, ...props }: CodeType) {
+export function CodeBlock({ children }) {
+  return (
+    <pre
+      style={{
+        padding: '1em 5%',
+        overflow: 'auto',
+        background: '#d9d9d9',
+        counterReset: 'linenumbers',
+        lineHeight: 1,
+      }}
+    >
+      {children}
+    </pre>
+  )
+}
+
+export default function Code({
+  componentType,
+  language = 'react',
+  children,
+  ...props
+}: CodeType) {
   if (!children) {
     return (
-      <code>
+      <code className={`language-${language}`}>
         &lt;{componentType}
         {mapProps(props)} /&gt;
       </code>
@@ -31,7 +53,7 @@ export default function Code({ componentType, children, ...props }: CodeType) {
 
   if (componentType) {
     return (
-      <code>
+      <code className={`language-${language}`}>
         &lt;{componentType}
         {mapProps(props)}&gt;
         {children}&lt;/{componentType}&gt;
