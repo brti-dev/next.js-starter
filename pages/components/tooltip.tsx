@@ -1,4 +1,4 @@
-import Code from 'components/Code'
+import Code, { CodeBlock } from 'components/Code'
 import Layout from 'components/Layout'
 import Tooltip from 'components/Tooltip'
 
@@ -10,9 +10,9 @@ export default function TooltipDoc() {
       <Tooltip label="Save">
         <button style={{ fontSize: 25 }}>💾</button>
       </Tooltip>
-      <p>
+      <CodeBlock>
         <Code>{`<Tooltip label="Save"><button>💾</button></Tooltip>`}</Code>
-      </p>
+      </CodeBlock>
     </Layout>
   )
 }

@@ -1,5 +1,5 @@
 import Layout from 'components/Layout'
-import Code from 'components/Code'
+import Code, { CodeBlock } from 'components/Code'
 import useAlert from 'lib/use-alert'
 
 export default function AvatarComponent() {
@@ -15,6 +15,20 @@ export default function AvatarComponent() {
     <Layout>
       <h1>Alert</h1>
       <p>A React Hook to access an alert state and component.</p>
+
+      <h2>Usage</h2>
+      <CodeBlock>
+        <Code>{`function App() {
+  const [AlertComponent, setAlert] = useAlert()
+
+  return (
+    <AlertComponent />
+    <button onClick={() => setAlert('Something happened')}>Alert</button>
+    <button onClick={() => setAlert({ message:'Danger!', severity: 'warning' })}>Danger</button>
+  )
+}`}</Code>
+      </CodeBlock>
+
       <h2>Sample</h2>
       <AlertError />
       <AlertSuccess />

@@ -1,7 +1,7 @@
 import Layout from 'components/Layout'
 import Badge from 'components/Badge'
 import Avatar from 'components/Avatar'
-import Code from 'components/Code'
+import Code, { CodeBlock } from 'components/Code'
 import { IconButton } from 'components/Button'
 import { BiBell as BellIcon } from 'react-icons/bi'
 
@@ -16,30 +16,33 @@ export default function BadgeComponent() {
         A small emblem to attach to avatars, icons, and other elements to
         generate notifications.
       </p>
+
       <h2>Basic Badge</h2>
       <Badge content={1}>
         <IconButton variant="contained" color="primary">
           <BellIcon />
         </IconButton>
       </Badge>
-      <p>
+      <CodeBlock>
         <Code>{`<Badge content={1}><BellIcon /></Badge>`}</Code>
-      </p>
+      </CodeBlock>
 
       <h2>Colored Badge</h2>
       <div style={{ display: 'flex', gap: '1em' }}>
         {COLORS.map(color => (
           <Badge key={color} content={99} color={color}>
-            <Avatar>{color.substring(0, 1).toUpperCase()}</Avatar>
+            <Avatar alt={color}>{color.substring(0, 1).toUpperCase()}</Avatar>
           </Badge>
         ))}
       </div>
-      {COLORS.map(color => (
-        <p key={color}>
-          <Code>{`<Badge content={99} color="${color}"><Avatar /></Badge>`}</Code>
-        </p>
-      ))}
-
+      <CodeBlock>
+        <Code>
+          {COLORS.map(
+            color => `<Badge content={99} color="${color}"><Avatar /></Badge>
+`
+          )}
+        </Code>
+      </CodeBlock>
       {/* <h2>Sizes</h2>
       <div style={{ display: 'flex', gap: '1em' }}>
         {SIZES.map(size => (
@@ -65,9 +68,9 @@ export default function BadgeComponent() {
           <BellIcon />
         </IconButton>
       </Badge>
-      <p>
+      <CodeBlock>
         <Code>{`<Badge variant="dot" color="secondary"><BellIcon /></Badge>`}</Code>
-      </p>
+      </CodeBlock>
 
       <h2>Maximum Content</h2>
       <p>
@@ -79,9 +82,9 @@ export default function BadgeComponent() {
           <BellIcon />
         </IconButton>
       </Badge>
-      <p>
+      <CodeBlock>
         <Code>{`<Badge color="red" max={99} content={100}><BellIcon /></Badge>`}</Code>
-      </p>
+      </CodeBlock>
 
       <h2>Badge Visibility</h2>
       <p>
@@ -100,12 +103,10 @@ export default function BadgeComponent() {
           </IconButton>
         </Badge>
       </div>
-      <p>
-        <Code>{`<Badge color="red" content={0}><BellIcon /></Badge>`}</Code>
-      </p>
-      <p>
-        <Code>{`<Badge color="red" content={0} showZero={true}><BellIcon /></Badge>`}</Code>
-      </p>
+      <CodeBlock>
+        <Code>{`<Badge color="red" content={0}><BellIcon /></Badge>
+<Badge color="red" content={0} showZero={true}><BellIcon /></Badge>`}</Code>
+      </CodeBlock>
     </Layout>
   )
 }

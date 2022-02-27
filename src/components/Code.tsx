@@ -26,7 +26,7 @@ export function CodeBlock({ children }) {
       style={{
         padding: '1em 5%',
         overflow: 'auto',
-        background: '#d9d9d9',
+        background: 'var(--color-surface)',
         counterReset: 'linenumbers',
         lineHeight: 1,
       }}

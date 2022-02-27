@@ -272,9 +272,28 @@ button,
   cursor: pointer;
   background: transparent;
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.75;
+  &[data-loading='true'] {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-surface);
+    cursor: wait;
+
+    &::after {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      position: absolute;
+      animation: wave 1.6s linear 0.5s infinite;
+      transform: translateX(-100%);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+      );
+    }
   }
 
   &.size-small {
@@ -346,27 +365,9 @@ button,
     border: 1px solid var(--color-comment);
   }
 
-  &[data-loading='true'] {
-    position: relative;
-    overflow: hidden;
-    cursor: wait;
-
-    &::after {
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      content: '';
-      position: absolute;
-      animation: wave 1.6s linear 0.5s infinite;
-      transform: translateX(-100%);
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.15),
-        transparent
-      );
-    }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
   }
 }
 
