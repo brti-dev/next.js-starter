@@ -1,61 +1,92 @@
 import { useState } from 'react'
 import Layout from 'components/Layout'
-import CheckButton, { checkButtonContainerClass } from 'components/CheckButton'
-import Code from 'components/Code'
+import CheckButton, { CheckButtonGroup } from 'components/CheckButton'
+import Code, { CodeBlock } from 'components/Code'
 
 export default function CheckButtonComponent() {
-  const [checked, setChecked] = useState('has_boat')
+  const [checked, setChecked] = useState({ foo: true, bar: false })
+  const [radio, setRadio] = useState('has_boat')
   return (
     <Layout>
       <h1>CheckButton</h1>
-      <p>A button-like alternative to a checkbox</p>
-      <h2>Example</h2>
-      <div className={checkButtonContainerClass}>
+      <p>A button-like alternative to a checkbox.</p>
+
+      <h2>Checkbox-Like Example</h2>
+      <CheckButtonGroup>
+        <CheckButton
+          name="foo"
+          value="foo"
+          checked={checked.foo}
+          onChange={isChecked => setChecked(c => ({ ...c, foo: isChecked }))}
+        >
+          Foo
+        </CheckButton>
+        <CheckButton
+          name="bar"
+          value="bar"
+          checked={checked.bar}
+          onChange={isChecked => setChecked(c => ({ ...c, bar: isChecked }))}
+        >
+          Bar
+        </CheckButton>
+      </CheckButtonGroup>
+
+      <h2>Radio-Like Example</h2>
+      <CheckButtonGroup>
         <CheckButton
           name="daddy"
           value="true"
-          checked={checked == 'daddy'}
-          onChange={() => setChecked('daddy')}
+          checked={radio === 'daddy'}
+          onChange={() => setRadio('daddy')}
         >
           👨 I'm a daddy
         </CheckButton>
         <CheckButton
           name="has_boat"
           value="true"
-          checked={checked == 'has_boat'}
-          onChange={() => setChecked('has_boat')}
+          checked={radio === 'has_boat'}
+          onChange={() => setRadio('has_boat')}
         >
           🛥️ I have a boat
         </CheckButton>
-      </div>
+        <div>
+          Checked: <strong>{radio || 'none'}</strong>
+        </div>
+      </CheckButtonGroup>
+      <CodeBlock>
+        <Code>{`<CheckButtonGroup> 
+  <CheckButton name="gender" value="male">
+    👨 I'm a daddy
+  </CheckButton>
+
+  <CheckButton
+    name="has_boat"
+    value="yes"
+    checked={true}
+  >
+    🛥️ I have a boat
+  </CheckButton>
+<CheckButtonGroup>`}</Code>
+      </CodeBlock>
+
+      <h2>Props</h2>
+      <h3>as</h3>
       <p>
-        <pre>
-          <code>
-            import CheckButton, &#123;checkButtonContainerClass&#125; from
-            'components/CheckButton'
-            <br />
-            <br />
-            &lt;div className=&#123;checkButtonContainerClass&#125;&gt;
-            <br />
-            &nbsp;&nbsp;
-            <Code componentType="CheckButton" name="gender" value="male">
-              👨 I'm a daddy
-            </Code>
-            <br />
-            &nbsp;&nbsp;
-            <Code
-              componentType="CheckButton"
-              name="has_boat"
-              value="yes"
-              checked={true}
-            >
-              🛥️ I have a boat
-            </Code>
-            <br />
-            &lt;div&gt;
-          </code>
-        </pre>
+        <Code>{'as={string|ReactElement'}</Code>
       </p>
+
+      <h3>orientation</h3>
+      <p>
+        <Code>{`orientation={'horizontal'|'vertical'}`}</Code>
+      </p>
+      <CheckButtonGroup orientation="vertical">
+        <CheckButton name="foo" value="1">
+          Foo
+        </CheckButton>
+        <CheckButton name="bar" value="1">
+          Bar
+        </CheckButton>
+      </CheckButtonGroup>
     </Layout>
   )
 }

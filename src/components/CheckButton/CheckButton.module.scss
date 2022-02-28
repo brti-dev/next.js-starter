@@ -4,6 +4,10 @@
   gap: 1em;
 }
 
+.containerVertical {
+  flex-direction: column;
+}
+
 .checkButton {
   label {
     opacity: 0.8;

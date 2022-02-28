@@ -1,7 +1,10 @@
 import { memo } from 'react'
 
+import {
+  OverloadedElement,
+  OverloadedElementProps,
+} from 'interfaces/OverloadedElement'
 import classes from './CheckButton.module.scss'
-import makeRandomString from 'lib/make-random-string'
 
 export const checkButtonContainerClass = classes.container
 
@@ -11,7 +14,7 @@ export type CheckButtonProps = {
   checked?: boolean
   id?: string
   onChange?: (value: boolean) => void
-  children: React.ReactElement | string
+  children: React.ReactNode
 }
 
 function CheckButton({
@@ -19,17 +22,13 @@ function CheckButton({
   value,
   checked = false,
   id,
-  onChange = null,
+  onChange = () => {},
   children,
 }: CheckButtonProps) {
-  const toggleChecked = () => {
-    if (onChange) {
-      onChange(!checked)
-    }
-  }
+  const toggleChecked = () => onChange(!checked)
 
   if (!id) {
-    id = `checkButton__${name}__${makeRandomString()}`
+    id = `checkButton__${name}__${value}`
   }
 
   return (
@@ -48,6 +47,30 @@ function CheckButton({
       </label>
     </div>
   )
+}
+
+export type CheckButtonGroupProps = OverloadedElementProps & {
+  className?: string
+  orientation?: 'horizontal' | 'vertical'
+}
+
+export const CheckButtonGroup: OverloadedElement<CheckButtonGroupProps> = (
+  props: CheckButtonGroupProps
+) => {
+  const {
+    as: Component = 'div',
+    className,
+    orientation = 'horizontal',
+    ...rest
+  } = props
+
+  const classNames = [className, classes.container]
+  if (orientation === 'vertical') {
+    classNames.push(classes.containerVertical)
+  }
+  const classNameString = classNames.filter(cn => !!cn).join(' ')
+
+  return <Component className={classNameString} {...rest} />
 }
 
 export default memo(CheckButton)
