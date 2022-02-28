@@ -1,6 +1,9 @@
 import React from 'react'
 
-import { OverloadedElement } from 'interfaces/OverloadedElement'
+import {
+  OverloadedElement,
+  OverloadedElementProps,
+} from 'interfaces/OverloadedElement'
 import Tooltip from 'components/Tooltip'
 import classes from './Avatar.module.scss'
 
@@ -12,7 +15,7 @@ export type AvatarProps = {
   size?: number
   src?: string
   tooltip?: string | boolean
-}
+} & OverloadedElementProps
 
 const TooltipWrapper = ({ tooltipLabel, children }) =>
   tooltipLabel ? <Tooltip label={tooltipLabel}>{children}</Tooltip> : children

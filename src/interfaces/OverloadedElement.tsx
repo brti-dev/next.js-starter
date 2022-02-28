@@ -30,3 +30,7 @@ export interface OverloadedElement<P> {
     props: P & DistributiveOmit<React.ComponentPropsWithRef<'div'>, keyof P>
   ): JSX.Element
 }
+
+export type OverloadedElementProps = {
+  as?: string | React.ElementType
+}

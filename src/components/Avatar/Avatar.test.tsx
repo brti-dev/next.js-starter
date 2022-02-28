@@ -74,8 +74,9 @@ test('should filter non-valid (non-Avatar) children in a group', () => {
   expect(getByText('+98')).toBeInTheDocument()
 })
 
-test('should render another component wrapper when given `component` prop', () => {
-  const Foo = ({ foo, children }) => <div data-foo={foo}>{children}</div>
+test('should overload element root when given `as` prop', () => {
+  const Foo = ({ foo, ...rest }) => <div data-foo={foo} {...rest} />
+
   const { getByText } = render(
     <Avatar alt="Barry Lyndon" as={Foo} foo="foo">
       BL
