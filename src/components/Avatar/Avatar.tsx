@@ -75,21 +75,12 @@ export type AvatarGroupProps = {
   children: React.ReactNode
 }
 
-function isValidChild(child) {
-  return (
-    typeof child !== 'string' &&
-    typeof child !== 'number' &&
-    child.type === Avatar
-  )
-}
-
 export const AvatarGroup = ({
   max,
   total,
   children: allChildren,
 }: AvatarGroupProps) => {
-  // Convert childs to array and filter out non-Avatar components
-  const children = React.Children.toArray(allChildren).filter(isValidChild)
+  const children = React.Children.toArray(allChildren)
   const numChildren = children.length
 
   if (numChildren > max || numChildren < total) {

@@ -80,19 +80,6 @@ test('should indicate total in a group', () => {
   expect(getByText('+98')).toBeInTheDocument()
 })
 
-test('should filter non-valid (non-Avatar) children in a group', () => {
-  const { getByText } = render(
-    <AvatarGroup total={100}>
-      <Avatar alt="foo">F</Avatar>
-      <Avatar alt="bar">B</Avatar>
-      <div>fff</div>
-      <span>ddd</span>
-    </AvatarGroup>
-  )
-
-  expect(getByText('+98')).toBeInTheDocument()
-})
-
 test('should overload element root when given `as` prop', () => {
   const Foo = ({ foo, ...props }: { foo: string }) => (
     <div data-foo={foo} {...props} />
