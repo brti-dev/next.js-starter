@@ -2,6 +2,11 @@ import '@testing-library/jest-dom'
 
 import { render } from '../../../test-utils'
 import Avatar, { AvatarGroup } from './Avatar'
+import {
+  OverloadedElement,
+  OverloadedElementProps,
+} from 'interfaces/OverloadedElement'
+import React from 'react'
 
 test('should render initials and label properly', () => {
   const { getByText } = render(<Avatar alt="Barry Lyndon">BL</Avatar>)
@@ -24,6 +29,20 @@ test('should render an image', () => {
   expect(img).toHaveLength(2)
   expect(img[1]).toHaveAttribute('alt', alt)
   expect(img[1]).toHaveAttribute('src', src)
+})
+
+test('should size correctly by default and when given a `size` value', () => {
+  const { getByText } = render(
+    <AvatarGroup>
+      <Avatar alt="a">a</Avatar>
+      <Avatar alt="b" size={20}>
+        b
+      </Avatar>
+    </AvatarGroup>
+  )
+
+  expect(getByText('a')).toHaveStyle({ width: '40px' })
+  expect(getByText('b')).toHaveStyle({ width: '20px' })
 })
 
 test('should render group', () => {
@@ -75,13 +94,47 @@ test('should filter non-valid (non-Avatar) children in a group', () => {
 })
 
 test('should overload element root when given `as` prop', () => {
-  const Foo = ({ foo, ...rest }) => <div data-foo={foo} {...rest} />
+  const Foo = ({ foo, ...props }: { foo: string }) => (
+    <div data-foo={foo} {...props} />
+  )
 
   const { getByText } = render(
-    <Avatar alt="Barry Lyndon" as={Foo} foo="foo">
+    <Avatar alt="foo" as={Foo} foo="foo">
       BL
     </Avatar>
   )
 
   expect(getByText('BL')).toHaveAttribute('data-foo', 'foo')
+})
+
+test('should function as overloaded element', () => {
+  type User = {
+    username: string
+    id: number
+    image: `cloudinary:${string}`
+  }
+  type Props = {
+    user: User
+    children?: React.ReactNode
+  } & OverloadedElementProps
+
+  const user: User = {
+    username: 'User987',
+    id: 123,
+    image: 'cloudinary:foo.jpg',
+  }
+
+  const ProfileImage: OverloadedElement<Props> = ({
+    user,
+    as: Component = 'div',
+    ...props
+  }: Props) => <Component src={'foo.jpg'} alt={user.username} {...props} />
+
+  const { getByLabelText } = render(
+    <ProfileImage as={Avatar} user={user}>
+      BL
+    </ProfileImage>
+  )
+
+  expect(getByLabelText(user.username)).toHaveAttribute('role', 'img')
 })
