@@ -5,7 +5,7 @@ import { BiRightArrowAlt as ArrowRightIcon } from 'react-icons/bi'
 import classes from 'styles/article.module.scss'
 import Date from 'components/Date'
 
-type ArticleProps = {
+export type ArticleProps = {
   title?: string
   description?: string | React.ReactElement
   preface?: string | React.ReactElement
