@@ -41,8 +41,8 @@ test('should size correctly by default and when given a `size` value', () => {
     </AvatarGroup>
   )
 
-  expect(getByText('a')).toHaveStyle({ width: '40px' })
-  expect(getByText('b')).toHaveStyle({ width: '20px' })
+  expect(getByText('a')).toHaveStyle({ '--size': '40px' })
+  expect(getByText('b')).toHaveStyle({ '--size': '20px' })
 })
 
 test('should render group', () => {

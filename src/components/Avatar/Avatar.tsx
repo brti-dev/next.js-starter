@@ -53,7 +53,7 @@ const Avatar: OverloadedElement<AvatarProps> = React.forwardRef<
 
   const finalProps = {
     className: classNames.join(' '),
-    style: { width: size, height: size },
+    style: { '--size': `${size}px` } as React.CSSProperties,
     ref,
     role: 'img',
     'aria-label': alt !== children ? alt : undefined,

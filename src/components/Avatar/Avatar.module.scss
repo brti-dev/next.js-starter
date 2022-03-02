@@ -2,6 +2,8 @@
 
 .avatar {
   box-sizing: border-box;
+  width: var(--size);
+  height: var(--size);
   margin: 0;
   padding: 0;
   display: flex;
