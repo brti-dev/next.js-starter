@@ -1,6 +1,8 @@
 import { forwardRef } from 'react'
 import Link from 'next/link'
 
+import classes from './Button.module.scss'
+
 export type ButtonProps = {
   type?: 'button' | 'reset' | 'submit'
   variant?: 'text' | 'contained' | 'outlined' | 'link' | 'close'
@@ -37,19 +39,22 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     ...rest
   } = props
 
-  const classNames = [
-    'button',
-    `variant-${variant}`,
-    `color-${color}`,
-    `size-${size}`,
-    icon && 'icon',
-    className && className,
+  const classNameString = [
+    'button', // Give access to global button style shared with other inputs
+    classes.button,
+    classes[variant],
+    `color-${color}`, // Only a subset of variant 'contained'
+    classes[size],
+    icon ? classes.icon : undefined,
+    className ?? undefined,
   ]
+    .filter(cn => !!cn)
+    .join(' ')
 
   if (to) {
     return (
       <Link href={to}>
-        <a className={classNames.join(' ')} {...rest}>
+        <a className={classNameString} {...rest}>
           {children}
         </a>
       </Link>
@@ -59,7 +64,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   return (
     <button
       type={type}
-      className={classNames.join(' ')}
+      className={classNameString}
       disabled={disabled || loading ? true : undefined}
       data-loading={loading ? true : undefined}
       ref={ref}
