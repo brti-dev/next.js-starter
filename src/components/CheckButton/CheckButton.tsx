@@ -1,53 +1,71 @@
-import { memo } from 'react'
+import { memo, forwardRef } from 'react'
 
 import {
   OverloadedElement,
   OverloadedElementProps,
 } from 'interfaces/OverloadedElement'
 import classes from './CheckButton.module.scss'
-
-export const checkButtonContainerClass = classes.container
+import buttonClasses from 'components/Button/Button.module.scss'
 
 export type CheckButtonProps = {
   name: string
   value: string
   checked?: boolean
+  disabled?: boolean
+  loading?: boolean
   id?: string
+  className?: string
   onChange?: (value: boolean) => void
   children: React.ReactNode
 }
 
-function CheckButton({
-  name,
-  value,
-  checked = false,
-  id,
-  onChange = () => {},
-  children,
-}: CheckButtonProps) {
-  const toggleChecked = () => onChange(!checked)
+const CheckButton = forwardRef<HTMLLabelElement, CheckButtonProps>(
+  (props, ref) => {
+    const {
+      name,
+      value,
+      checked,
+      disabled,
+      loading,
+      id: naturalId,
+      className,
+      onChange = () => {},
+      children,
+      ...rest
+    } = props
+    const id = naturalId || `checkButton__${name}__${value}`
 
-  if (!id) {
-    id = `checkButton__${name}__${value}`
+    const toggleChecked = () => onChange(!checked)
+
+    return (
+      <div
+        className={[className, classes.checkButton]
+          .filter(cn => !!cn)
+          .join(' ')}
+        {...rest}
+      >
+        <input
+          type="checkbox"
+          name={name}
+          value={value}
+          checked={checked}
+          disabled={disabled || loading}
+          id={id}
+          className="visually-hidden"
+          onChange={toggleChecked}
+        />
+        <label
+          htmlFor={id}
+          className={`button ${buttonClasses.button}`}
+          data-loading={loading && 'true'}
+          ref={ref}
+        >
+          {children}
+        </label>
+      </div>
+    )
   }
-
-  return (
-    <div className={classes.checkButton}>
-      <input
-        type="checkbox"
-        name={name}
-        value={value}
-        checked={checked}
-        id={id}
-        className="visually-hidden"
-        onChange={toggleChecked}
-      />
-      <label htmlFor={id} className="button">
-        {children}
-      </label>
-    </div>
-  )
-}
+)
 
 export type CheckButtonGroupProps = OverloadedElementProps & {
   className?: string

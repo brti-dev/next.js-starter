@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Layout from 'components/Layout'
 import CheckButton, { CheckButtonGroup } from 'components/CheckButton'
 import Code, { CodeBlock } from 'components/Code'
+import Button from 'components/Button'
 
 export default function CheckButtonComponent() {
   const [checked, setChecked] = useState({ foo: true, bar: false })
@@ -29,6 +30,12 @@ export default function CheckButtonComponent() {
         >
           Bar
         </CheckButton>
+        <CheckButton name="baz" value="baz" disabled>
+          Disabled
+        </CheckButton>
+        <CheckButton name="fiz" value="fiz" loading>
+          Loading
+        </CheckButton>
       </CheckButtonGroup>
 
       <h2>Radio-Like Example</h2>
@@ -53,26 +60,13 @@ export default function CheckButtonComponent() {
           Checked: <strong>{radio || 'none'}</strong>
         </div>
       </CheckButtonGroup>
-      <CodeBlock>
-        <Code>{`<CheckButtonGroup> 
-  <CheckButton name="gender" value="male">
-    👨 I'm a daddy
-  </CheckButton>
 
-  <CheckButton
-    name="has_boat"
-    value="yes"
-    checked={true}
-  >
-    🛥️ I have a boat
-  </CheckButton>
-<CheckButtonGroup>`}</Code>
-      </CodeBlock>
-
-      <h2>Props</h2>
+      <h2>
+        <code>CheckButtonGroup</code> Props
+      </h2>
       <h3>as</h3>
       <p>
-        <Code>{'as={string|ReactElement'}</Code>
+        <Code>{'as={string|ReactElement}'}</Code>
       </p>
 
       <h3>orientation</h3>
