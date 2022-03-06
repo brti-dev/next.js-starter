@@ -1,4 +1,4 @@
-This is a starter for a Next.js app bootstrapped with TypeScript. It includes CSS for a responsive app, light and dark themes based on `prefers-color-scheme` media query, a library of common UI components, and helper React hooks.
+This is a starter for a Next.js app bootstrapped with TypeScript. It includes CSS for a responsive app, light and dark themes based on `prefers-color-scheme` media query, a design system with tested common UI components, and helper React hooks.
 
 ## Getting Started
 
@@ -26,6 +26,10 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
+## Run Tests
+
+Tests use Jest and React Testing Library to test UI components and units. Use `npm run test` to initialize tests.
+
 ## Config
 
 Currently configured for [static export](https://nextjs.org/docs/advanced-features/static-html-export). To deploy another way:
@@ -45,6 +49,7 @@ This started comes packaged with a selection of common UI components. See [UI Co
 
 ## Used to Build
 
-- [mattberti.com](http://mattberti.com)
-- [brandonpaillant.com](http://brandenpaillant.com)
+- [mattberti.com](https://mattberti.com)
+- [brandonpaillant.com](https://brandenpaillant.com)
+- [Boat Daddy](https://boatdaddy.app)
 - [Customer Direct](https://customerdirect.net)
