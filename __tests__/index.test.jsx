@@ -6,7 +6,7 @@ import Home from '../pages/index'
 import '@testing-library/jest-dom'
 
 import { render, screen } from '../test-utils'
-import * as config from '../app.config'
+import { siteTitle } from '../package.json'
 import useMediaQuery from '../src/lib/use-media-query'
 
 test('two plus two is four', () => {
@@ -41,7 +41,7 @@ describe('Home', () => {
     render(<Home />)
 
     const heading = screen.getByRole('heading', {
-      name: config.siteTitle,
+      name: siteTitle,
     })
 
     expect(heading).toBeInTheDocument()
