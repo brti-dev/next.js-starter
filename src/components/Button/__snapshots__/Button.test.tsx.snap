@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders button unchanged 1`] = `
+<button
+  className="button variant--contained color--primary size--small"
+  style={
+    Object {
+      "width": "50px",
+    }
+  }
+  type="button"
+>
+  <span
+    className="text-content"
+  >
+    Button
+  </span>
+</button>
+`;
+
+exports[`renders icon button unchanged 1`] = `
+<button
+  className="button variant--default color--default size--medium button__icon"
+  style={Object {}}
+  type="button"
+>
+  <span
+    className="icon-content"
+  >
+    icon
+  </span>
+</button>
+`;

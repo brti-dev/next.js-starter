@@ -23,10 +23,16 @@ $radius: 0.13rem;
   --color-surface: #{$color-surface-light};
   --color-surface-hover: #{$color-surface-hover-light};
   --color-comment: #{$color-comment-light};
+  --color-error: #{$red};
+  --color-warning: #{$yellow};
+  --color-info: #{$blue};
+  --color-success: #{$green};
   --spacing: #{$spacing-small};
   --radius: #{$radius};
+  --input-height: 2rem;
+  --input-height-small: 1.5rem;
+  --input-height-large: 2.5rem;
 
-  font-size: normal;
   line-height: 100%;
 
   @include breakpoint(screen) {
@@ -223,31 +229,65 @@ kbd {
 }
 
 input,
+.input {
+  --input-padding: 0.75rem;
+
+  &.variant--outlined {
+    --input-padding: calc(0.75rem - 2px);
+  }
+}
+
+button,
+.button {
+  --input-padding: 0.95rem;
+
+  &.variant--outlined {
+    --input-padding: calc(0.95rem - 2px);
+  }
+}
+
+input,
 button,
 .input,
 .button {
   --line-height: 2.2em;
 
   box-sizing: border-box;
-  outline: none;
+  height: var(--input-height);
   line-height: var(--line-height);
-  padding: 0 0.75rem;
-  font-size: 1rem;
+  outline: none;
+  padding: 0 var(--input-padding);
+  font-size: 0.85rem;
   font-weight: 300;
   color: var(--color-font);
   border: 0;
   border-radius: var(--radius);
   background-color: var(--color-surface);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   text-decoration: none !important;
   user-select: none;
 
   &:hover {
-    box-shadow: var(--color-comment) 0px 0px 0px 1px;
+    background-color: var(--color-surface-hover);
+    border-color: transparent;
+    box-shadow: 0 0 0 2px var(--color-surface-hover);
   }
 
   &:focus {
-    box-shadow: var(--color-comment) 0px 0px 0px 3px;
+    border-color: transparent;
+    box-shadow: 0 0 0 3px var(--color-comment);
+  }
+
+  &.size-- {
+    &small {
+      height: var(--input-height-small);
+      font-size: 80%;
+    }
+
+    &large {
+      height: var(--input-height-large);
+      font-size: 120%;
+    }
   }
 }
 
@@ -261,6 +301,80 @@ textarea.input {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   line-height: 1;
+  height: auto;
+}
+
+.button {
+  display: inline-flex;
+  gap: 0.5em;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+
+  &[data-loading='true'] {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-surface);
+    cursor: wait;
+
+    &::after {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      position: absolute;
+      animation: wave 1.6s linear 0.5s infinite;
+      transform: translateX(-100%);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        transparent
+      );
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
+  }
+
+  &__icon {
+    border-radius: 50%;
+    width: var(--input-height);
+
+    &.variant--default {
+      box-shadow: none !important;
+    }
+
+    &.size--small {
+      width: var(--input-height-small);
+    }
+
+    &.size--large {
+      width: var(--input-height-large);
+    }
+  }
+
+  .icon-content {
+    display: flex;
+  }
+
+  .text-content {
+    padding: 0 var(--input-padding);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  &:hover:not(.variant--close) {
+    background: var(--color-surface-hover);
+  }
 }
 
 // Components
@@ -270,36 +384,43 @@ textarea.input {
   align-items: center;
   gap: 1em;
   padding: 0.5em 1em;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.43;
   border-radius: var(--radius);
   letter-spacing: 0.01071em;
-  background-color: var(--color-surface);
+  background: transparent;
+
+  & * {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.43;
+  }
+
+  .label {
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .content {
+    display: flex;
+    gap: 0.5em;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .message {
+      flex-basis: 100%;
+    }
+
+    .action {
+      flex-shrink: 0;
+    }
+
+    @include breakpoint('mobile') {
+      flex-direction: column;
+    }
+  }
 
   & + .alert {
     margin-top: 1em;
   }
-}
-.alert--error {
-  color: $red;
-  background-color: transparent;
-  border: 2px solid $red;
-}
-.alert--success {
-  color: $green;
-  border: 2px solid $green;
-  background-color: transparent;
-}
-.alert--info {
-  color: $blue;
-  border: 2px solid $blue;
-  background-color: transparent;
-}
-.alert--warning {
-  color: $purple;
-  border: 2px solid $purple;
-  background-color: transparent;
 }
 
 .card {
@@ -481,6 +602,99 @@ textarea.input {
 
 .surface {
   @extend %surface;
+}
+
+// Theme
+
+.variant--contained {
+  background-color: var(--color-surface);
+  &:hover {
+    background-color: var(--color-surface-hover);
+  }
+
+  &.color--primary {
+    background-color: var(--color-primary);
+    color: white;
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
+  }
+
+  &.color--secondary {
+    background-color: var(--color-secondary);
+    color: white;
+    &:hover {
+      background-color: var(--color-secondary-hover);
+    }
+  }
+
+  &.color--red,
+  &.color--error {
+    background-color: $red;
+    color: white;
+    &:hover {
+      background-color: color.scale($red, $lightness: 20%);
+    }
+  }
+
+  &.color--green,
+  &.color--success {
+    background-color: $green;
+    color: white;
+    &:hover {
+      background-color: color.scale($green, $lightness: 5%);
+    }
+  }
+
+  &.color--yellow,
+  &.color--warning {
+    background-color: $yellow;
+    color: white;
+    &:hover {
+      background-color: color.scale($yellow, $lightness: 20%);
+    }
+  }
+
+  &.color--blue,
+  &.color--info {
+    background-color: $blue;
+    color: white;
+    &:hover {
+      background-color: color.scale($blue, $lightness: 20%);
+    }
+  }
+}
+
+.variant--outlined {
+  border: 2px solid var(--color-surface);
+
+  &.color--primary {
+    border-color: var(--color-primary);
+  }
+
+  &.color--secondary {
+    border-color: var(--color-secondary);
+  }
+
+  &.color--red,
+  &.color--error {
+    border-color: $red;
+  }
+
+  &.color--green,
+  &.color--success {
+    border-color: $green;
+  }
+
+  &.color--yellow,
+  &.color--warning {
+    border-color: $yellow;
+  }
+
+  &.color--blue,
+  &.color--info {
+    border-color: $blue;
+  }
 }
 
 // Animations

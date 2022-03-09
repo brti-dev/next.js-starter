@@ -9,6 +9,7 @@ $red: #dd3333;
 $green: #00a264;
 $purple: #6b3ea8;
 $pink: #ffcfd8;
+$yellow: #f5a623;
 $darkpink: color.scale($pink, $lightness: -10%);
 $darkerpink: color.scale($pink, $lightness: -20%);
 $darkestpink: color.scale($pink, $lightness: -30%);
@@ -34,17 +35,16 @@ $color-primary-hover-dark: $lightblue;
 $color-secondary: $purple;
 $color-secondary-hover: color.scale($color-secondary, $lightness: 30%);
 
-
 // Media query based on client preference
 
 @mixin theme($theme) {
-    @if $theme == dark {
-        @media (prefers-color-scheme: dark) {
-            @content;
-        }
-    } @else {
-        @media (prefers-color-scheme: light) {
-            @content;
-        }
+  @if $theme == dark {
+    @media (prefers-color-scheme: dark) {
+      @content;
     }
+  } @else {
+    @media (prefers-color-scheme: light) {
+      @content;
+    }
+  }
 }

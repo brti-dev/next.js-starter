@@ -1,20 +1,17 @@
 import { forwardRef } from 'react'
 import Link from 'next/link'
 
-import classes from './Button.module.scss'
+import { Color, Variant } from 'interfaces/theme'
+import classnames from 'lib/classnames'
+
+type Percent = `${number}%`
 
 export type ButtonProps = {
   type?: 'button' | 'reset' | 'submit'
-  variant?: 'text' | 'contained' | 'outlined' | 'link' | 'close'
-  color?:
-    | 'default'
-    | 'primary'
-    | 'secondary'
-    | 'red'
-    | 'green'
-    | 'dark'
-    | 'light'
+  variant?: Variant | 'link' | 'close'
+  color?: Color
   size?: 'small' | 'medium' | 'large'
+  width?: number | Percent
   className?: string
   to?: string
   disabled?: boolean
@@ -27,9 +24,10 @@ export type ButtonProps = {
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     type = 'button',
-    variant = 'text',
+    variant = 'default',
     color = 'default',
     size = 'medium',
+    width,
     className,
     to,
     disabled = false,
@@ -39,23 +37,28 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     ...rest
   } = props
 
-  const classNameString = [
+  const style: any = {}
+  if (typeof width === 'number') {
+    style.width = `${width}px`
+  } else if (typeof width === 'string') {
+    // Percent
+    style.width = width
+  }
+
+  const classNameString = classnames(
     'button', // Give access to global button style shared with other inputs
-    classes.button,
-    classes[variant],
-    `color-${color}`, // Only a subset of variant 'contained'
-    classes[size],
-    icon ? classes.icon : undefined,
-    className ?? undefined,
-  ]
-    .filter(cn => !!cn)
-    .join(' ')
+    `variant--${variant}`,
+    `color--${color}`,
+    `size--${size}`,
+    icon && 'button__icon',
+    className
+  )
 
   if (to) {
     return (
       <Link href={to}>
         <a className={classNameString} {...rest}>
-          {children}
+          <span className="text-content">{children}</span>
         </a>
       </Link>
     )
@@ -66,11 +69,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       type={type}
       className={classNameString}
       disabled={disabled || loading ? true : undefined}
-      data-loading={loading ? true : undefined}
+      data-loading={loading ? 'true' : undefined}
+      style={style}
       ref={ref}
       {...rest}
     >
-      {children}
+      <span className={`${icon ? 'icon' : 'text'}-content`}>{children}</span>
     </button>
   )
 })

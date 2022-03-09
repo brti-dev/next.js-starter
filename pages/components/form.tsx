@@ -14,7 +14,7 @@ export default function FormComponent() {
         />
         <FormGroup
           label="Feedback"
-          input={<TextInput name="feedback" multiline={true} rows={2} />}
+          input={<TextInput name="feedback" multiline={true} rows={3} />}
         />
         <FormGroup
           label="Email"
