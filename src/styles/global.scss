@@ -29,9 +29,9 @@ $radius: 0.13rem;
   --color-success: #{$green};
   --spacing: #{$spacing-small};
   --radius: #{$radius};
-  --input-height: 2rem;
-  --input-height-small: 1.5rem;
-  --input-height-large: 2.5rem;
+  --input-height: 1.8rem;
+  --input-height-small: 1.4rem;
+  --input-height-large: 2.2rem;
 
   line-height: 100%;
 
@@ -257,7 +257,7 @@ button,
   line-height: var(--line-height);
   outline: none;
   padding: 0 var(--input-padding);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 300;
   color: var(--color-font);
   border: 0;
@@ -381,17 +381,21 @@ textarea.input {
 
 .alert {
   display: flex;
-  align-items: center;
-  gap: 1em;
-  padding: 0.5em 1em;
+  align-items: flex-start;
+  gap: 0.5em;
+  padding: 0.5em;
   border-radius: var(--radius);
   letter-spacing: 0.01071em;
   background: transparent;
+  line-height: 1.43;
 
-  & * {
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.43;
+  .icon {
+    display: flex;
+
+    & > * {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
   }
 
   .label {
@@ -400,13 +404,17 @@ textarea.input {
   }
 
   .content {
+    width: 100%;
     display: flex;
     gap: 0.5em;
     justify-content: space-between;
     align-items: baseline;
+    font-size: 0.85rem;
+    font-weight: 400;
 
     .message {
       flex-basis: 100%;
+      word-break: break-word;
     }
 
     .action {
@@ -670,30 +678,36 @@ textarea.input {
 
   &.color--primary {
     border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 
   &.color--secondary {
     border-color: var(--color-secondary);
+    color: var(--color-secondary);
   }
 
   &.color--red,
   &.color--error {
     border-color: $red;
+    color: $red;
   }
 
   &.color--green,
   &.color--success {
     border-color: $green;
+    color: $green;
   }
 
   &.color--yellow,
   &.color--warning {
     border-color: $yellow;
+    color: $yellow;
   }
 
   &.color--blue,
   &.color--info {
     border-color: $blue;
+    color: $blue;
   }
 }
 

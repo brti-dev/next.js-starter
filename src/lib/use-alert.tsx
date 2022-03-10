@@ -1,15 +1,6 @@
-import { useState, useCallback, createElement, useReducer } from 'react'
-import Alert from '@reach/alert'
-import {
-  BiError as ErrorIcon,
-  BiCheckCircle as SuccessIcon,
-  BiInfoCircle as InfoIcon,
-} from 'react-icons/bi'
+import { useCallback, useReducer } from 'react'
 
-type AlertDispatch = {
-  message: string | null
-  severity?: 'error' | 'success' | 'warning' | 'info'
-}
+import Alert, { AlertDispatch } from 'components/Alert'
 
 function reducer(
   state: null | AlertDispatch,
@@ -35,26 +26,14 @@ function reducer(
  * @returns {function} Function to set alert message
  */
 function useAlert(
-  initialState: null | string | AlertDispatch
+  initialState?: string | AlertDispatch
 ): [React.ComponentType, any] {
   const [alert, setAlert] = useReducer(reducer, reducer(null, initialState))
 
   const component = useCallback(() => {
-    const { message, severity } = alert
-    const classNames = ['alert']
-    if (severity) classNames.push(`alert--${severity}`)
+    if (!alert.message) return null
 
-    if (!message) return null
-
-    return (
-      <Alert hidden={!message} className={classNames.join(' ')}>
-        {severity === 'error' && <ErrorIcon />}
-        {severity === 'warning' && <ErrorIcon />}
-        {severity === 'success' && <SuccessIcon />}
-        {severity === 'info' && <InfoIcon />}
-        {message && <span>{message}</span>}
-      </Alert>
-    )
+    return <Alert {...{ ...alert }} />
   }, [alert])
 
   return [component, setAlert]
