@@ -37,7 +37,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     ...rest
   } = props
 
-  const style: any = {}
+  const style: React.CSSProperties = {}
   if (typeof width === 'number') {
     style.width = `${width}px`
   } else if (typeof width === 'string') {

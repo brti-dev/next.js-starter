@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import renderer from 'react-test-renderer'
 import userEvent from '@testing-library/user-event'
 
-import { Severity } from 'interfaces/theme'
+import { Severity, Variant } from 'interfaces/theme'
 import { reducer } from 'lib/use-alert'
 import { render, screen } from '../../../test-utils'
 import Alert, { AlertDispatch } from 'components/Alert'
@@ -40,12 +40,27 @@ describe('useAlert hook', () => {
   })
 })
 
-test('renders alert unchanged', () => {
+test('should render correctly', () => {
   const tree = renderer
     .create(
       <Alert severity="error" action={<b>Action</b>}>
         Alert
       </Alert>
+    )
+    .toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('should work with different variants', () => {
+  const tree = renderer
+    .create(
+      <>
+        {['default', 'outlined', 'contained'].map((variant: Variant) => (
+          <Alert variant={variant} key={variant}>
+            {variant}
+          </Alert>
+        ))}
+      </>
     )
     .toJSON()
   expect(tree).toMatchSnapshot()

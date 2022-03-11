@@ -27,42 +27,7 @@
   transform-origin: 100% 0%;
 }
 
-.color-default {
-  color: var(--color-font);
-  background-color: var(--color-surface);
-}
-
-.color-primary {
-  color: white;
-  background-color: var(--color-primary);
-}
-
-.color-secondary {
-  color: white;
-  background-color: var(--color-secondary);
-}
-
-.color-red {
-  color: white;
-  background-color: $red;
-}
-
-.color-green {
-  color: white;
-  background-color: $green;
-}
-
-.color-light {
-  color: $color-font-light;
-  background-color: $color-body-light;
-}
-
-.color-dark {
-  color: $color-font-dark;
-  background-color: $color-body-dark;
-}
-
-.variant-dot {
+.variant--dot {
   width: 10px;
   height: 10px;
   padding: 0;

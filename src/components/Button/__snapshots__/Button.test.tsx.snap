@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders button unchanged 1`] = `
+exports[`should render correctly 1`] = `
 <button
   className="button variant--contained color--primary size--small"
   style={
@@ -18,7 +18,7 @@ exports[`renders button unchanged 1`] = `
 </button>
 `;
 
-exports[`renders icon button unchanged 1`] = `
+exports[`should render icon button correctly 1`] = `
 <button
   className="button variant--default color--default size--medium button__icon"
   style={Object {}}
@@ -30,4 +30,173 @@ exports[`renders icon button unchanged 1`] = `
     icon
   </span>
 </button>
+`;
+
+exports[`should work with different colors 1`] = `
+Array [
+  <button
+    className="button variant--default color--primary size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      primary
+    </span>
+  </button>,
+  <button
+    className="button variant--default color--secondary size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      secondary
+    </span>
+  </button>,
+  <button
+    className="button variant--default color--error size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      error
+    </span>
+  </button>,
+  <button
+    className="button variant--default color--warning size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      warning
+    </span>
+  </button>,
+  <button
+    className="button variant--default color--info size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      info
+    </span>
+  </button>,
+  <button
+    className="button variant--default color--success size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      success
+    </span>
+  </button>,
+  <button
+    className="button variant--default color--dark size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      dark
+    </span>
+  </button>,
+  <button
+    className="button variant--default color--light size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      light
+    </span>
+  </button>,
+]
+`;
+
+exports[`should work with different sizes 1`] = `
+Array [
+  <button
+    className="button variant--default color--default size--small"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      small
+    </span>
+  </button>,
+  <button
+    className="button variant--default color--default size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      medium
+    </span>
+  </button>,
+  <button
+    className="button variant--default color--default size--large"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      large
+    </span>
+  </button>,
+]
+`;
+
+exports[`should work with different variants 1`] = `
+Array [
+  <button
+    className="button variant--default color--default size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      default
+    </span>
+  </button>,
+  <button
+    className="button variant--outlined color--default size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      outlined
+    </span>
+  </button>,
+  <button
+    className="button variant--contained color--default size--medium"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      contained
+    </span>
+  </button>,
+]
 `;

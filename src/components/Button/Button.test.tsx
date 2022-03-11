@@ -1,10 +1,13 @@
+import { useState } from 'react'
 import '@testing-library/jest-dom'
 import renderer from 'react-test-renderer'
+import userEvent from '@testing-library/user-event'
 
 import { render, screen } from '../../../test-utils'
+import { Variant, Color } from 'interfaces/theme'
 import Button, { IconButton } from '.'
 
-test('renders button unchanged', () => {
+test('should render correctly', () => {
   const tree = renderer
     .create(
       <Button variant="contained" color="primary" size="small" width={50}>
@@ -15,9 +18,77 @@ test('renders button unchanged', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('renders icon button unchanged', () => {
+test('should render icon button correctly', () => {
   const tree = renderer.create(<IconButton>icon</IconButton>).toJSON()
   expect(tree).toMatchSnapshot()
+})
+
+test('should work with different variants', () => {
+  const tree = renderer
+    .create(
+      <>
+        {['default', 'outlined', 'contained'].map((variant: Variant) => (
+          <Button variant={variant} key={variant}>
+            {variant}
+          </Button>
+        ))}
+      </>
+    )
+    .toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('should work with different colors', () => {
+  const tree = renderer
+    .create(
+      <>
+        {[
+          'primary',
+          'secondary',
+          'error',
+          'warning',
+          'info',
+          'success',
+          'dark',
+          'light',
+        ].map((color: Color) => (
+          <Button color={color} key={color}>
+            {color}
+          </Button>
+        ))}
+      </>
+    )
+    .toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('should work with different sizes', () => {
+  const tree = renderer
+    .create(
+      <>
+        {['small', 'medium', 'large'].map(
+          (size: 'small' | 'medium' | 'large') => (
+            <Button size={size} key={size}>
+              {size}
+            </Button>
+          )
+        )}
+      </>
+    )
+    .toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('should trigger a callback onClick', () => {
+  const ButtonComponent = () => {
+    const [clicks, setClicks] = useState(0)
+    return <Button onClick={() => setClicks(c => (c += 1))}>{clicks}</Button>
+  }
+
+  render(<ButtonComponent />)
+  const btn = screen.getByRole('button')
+  userEvent.click(btn)
+  expect(screen.getByText('1')).toBeInTheDocument()
 })
 
 test('shows spinner & disabled if loading', () => {

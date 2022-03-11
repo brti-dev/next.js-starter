@@ -267,6 +267,12 @@ button,
   text-decoration: none !important;
   user-select: none;
 
+  &:disabled,
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
+  }
+
   &:hover {
     background-color: var(--color-surface-hover);
     border-color: transparent;
@@ -336,11 +342,6 @@ textarea.input {
         transparent
       );
     }
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.75;
   }
 
   &__icon {
@@ -616,14 +617,15 @@ textarea.input {
 
 .variant--contained {
   background-color: var(--color-surface);
-  &:hover {
+
+  &:hover:not(.no-hover) {
     background-color: var(--color-surface-hover);
   }
 
   &.color--primary {
     background-color: var(--color-primary);
     color: white;
-    &:hover {
+    &:hover:not(.no-hover) {
       background-color: var(--color-primary-hover);
     }
   }
@@ -631,16 +633,26 @@ textarea.input {
   &.color--secondary {
     background-color: var(--color-secondary);
     color: white;
-    &:hover {
+    &:hover:not(.no-hover) {
       background-color: var(--color-secondary-hover);
     }
+  }
+
+  &.color--light {
+    color: $color-font-light;
+    background-color: $color-body-light;
+  }
+
+  &.color--dark {
+    color: $color-font-dark;
+    background-color: $color-body-dark;
   }
 
   &.color--red,
   &.color--error {
     background-color: $red;
     color: white;
-    &:hover {
+    &:hover:not(.no-hover) {
       background-color: color.scale($red, $lightness: 20%);
     }
   }
@@ -649,7 +661,7 @@ textarea.input {
   &.color--success {
     background-color: $green;
     color: white;
-    &:hover {
+    &:hover:not(.no-hover) {
       background-color: color.scale($green, $lightness: 5%);
     }
   }
@@ -658,7 +670,7 @@ textarea.input {
   &.color--warning {
     background-color: $yellow;
     color: white;
-    &:hover {
+    &:hover:not(.no-hover) {
       background-color: color.scale($yellow, $lightness: 20%);
     }
   }
@@ -667,7 +679,7 @@ textarea.input {
   &.color--info {
     background-color: $blue;
     color: white;
-    &:hover {
+    &:hover:not(.no-hover) {
       background-color: color.scale($blue, $lightness: 20%);
     }
   }

@@ -1,18 +1,12 @@
 import React from 'react'
+
+import { Color } from 'interfaces/theme'
 import classes from './Badge.module.scss'
 
 type BadgePropsBase = {
   children: React.ReactNode
   className?: string
-  color?:
-    | 'default'
-    | 'primary'
-    | 'secondary'
-    | 'red'
-    | 'green'
-    | 'dark'
-    | 'light'
-    | string
+  color?: Color
   max?: number
   showZero?: boolean
   size?: 'small' | 'medium' | 'large' | number
@@ -42,10 +36,13 @@ function Badge(props: BadgeProps) {
   } = props
 
   const classNames = [
+    'badge',
     classes.content,
-    classes[`variant-${variant}`],
-    classes[`color-${color}`],
-    classes[`size-${size}`],
+    'variant--contained', // Access global colors
+    `color--${color}`,
+    'no-hover',
+    classes[`variant--${variant}`],
+    classes[`size--${size}`],
     className && className,
   ]
 

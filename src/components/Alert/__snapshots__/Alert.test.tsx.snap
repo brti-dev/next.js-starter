@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders alert unchanged 1`] = `
+exports[`should render correctly 1`] = `
 <div
   className="alert variant--outlined color--error"
   data-reach-alert={true}
@@ -52,4 +52,54 @@ exports[`renders alert unchanged 1`] = `
     </div>
   </div>
 </div>
+`;
+
+exports[`should work with different variants 1`] = `
+Array [
+  <div
+    className="alert variant--default"
+    data-reach-alert={true}
+    role="alert"
+  >
+    <div
+      className="content"
+    >
+      <div
+        className="message"
+      >
+        default
+      </div>
+    </div>
+  </div>,
+  <div
+    className="alert variant--outlined"
+    data-reach-alert={true}
+    role="alert"
+  >
+    <div
+      className="content"
+    >
+      <div
+        className="message"
+      >
+        outlined
+      </div>
+    </div>
+  </div>,
+  <div
+    className="alert variant--contained"
+    data-reach-alert={true}
+    role="alert"
+  >
+    <div
+      className="content"
+    >
+      <div
+        className="message"
+      >
+        contained
+      </div>
+    </div>
+  </div>,
+]
 `;

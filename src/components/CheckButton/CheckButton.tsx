@@ -4,19 +4,19 @@ import {
   OverloadedElement,
   OverloadedElementProps,
 } from 'interfaces/OverloadedElement'
+import classnames from 'lib/classnames'
 import classes from './CheckButton.module.scss'
-import buttonClasses from 'components/Button/Button.module.scss'
 
 export type CheckButtonProps = {
   name: string
+  children: React.ReactNode
   value: string
   checked?: boolean
-  disabled?: boolean
-  loading?: boolean
-  id?: string
   className?: string
+  disabled?: boolean
+  id?: string
+  loading?: boolean
   onChange?: (value: boolean) => void
-  children: React.ReactNode
 }
 
 const CheckButton = forwardRef<HTMLLabelElement, CheckButtonProps>(
@@ -38,12 +38,7 @@ const CheckButton = forwardRef<HTMLLabelElement, CheckButtonProps>(
     const toggleChecked = () => onChange(!checked)
 
     return (
-      <div
-        className={[className, classes.checkButton]
-          .filter(cn => !!cn)
-          .join(' ')}
-        {...rest}
-      >
+      <div className={classnames(className, classes.checkButton)} {...rest}>
         <input
           type="checkbox"
           name={name}
@@ -56,11 +51,14 @@ const CheckButton = forwardRef<HTMLLabelElement, CheckButtonProps>(
         />
         <label
           htmlFor={id}
-          className={`button ${buttonClasses.button}`}
+          className={classnames(
+            'button variant--outlined',
+            (disabled || loading) && 'disabled'
+          )}
           data-loading={loading && 'true'}
           ref={ref}
         >
-          {children}
+          <span className="text-content">{children}</span>
         </label>
       </div>
     )
