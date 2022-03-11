@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 
 import { Severity } from 'interfaces/theme'
 import { reducer } from 'lib/use-alert'
-import { render } from '../../../test-utils'
+import { render, screen } from '../../../test-utils'
 import Alert, { AlertDispatch } from 'components/Alert'
 import Button from 'components/Button'
 import { AlertHook } from '../../../pages/components/alert'
@@ -23,21 +23,20 @@ describe('useAlert hook', () => {
   })
 
   test('alert appears and disappears', () => {
-    const { getByText, queryByText } = render(<AlertHook />)
+    render(<AlertHook />)
 
-    const alertBtn = getByText('Alert')
-    const dismissBtn = getByText('Dismiss')
-    const alert = queryByText(/something happened/i) // Query will return node OR null; It will never throw
+    const alertBtn = screen.getByText('Alert')
+    const dismissBtn = screen.getByText('Dismiss')
 
     expect(alertBtn).toBeInTheDocument()
     expect(dismissBtn).toBeInTheDocument()
-    expect(alert).toBeNull() // Because null indicates query returned empty
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument() // Query will return node OR null; It will never throw
 
     userEvent.click(alertBtn)
-    expect(alert).not.toBeNull()
+    expect(screen.queryByRole('alert')).toBeInTheDocument()
 
     userEvent.click(dismissBtn)
-    expect(alert).toBeNull()
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
   })
 })
 
@@ -55,7 +54,9 @@ test('renders alert unchanged', () => {
 test('has the proper `severity` attributes', () => {
   const severity = SEVERITY[0]
   const { getByRole, rerender } = render(
-    <Alert severity={severity as Severity}>alert</Alert>
+    <Alert severity={severity as Severity} label="Alert">
+      Foo
+    </Alert>
   )
   expect(getByRole('alert')).toHaveAttribute('data-severity', severity)
 

@@ -40,7 +40,7 @@ export default function AvatarComponent() {
       <h1>Alert</h1>
       <p>Error, warning, and other important notes</p>
 
-      <Alert severity="error" label="Critical Error">
+      <Alert severity="error" label="Critical Error" type="assertive">
         Something happened
       </Alert>
       <Alert

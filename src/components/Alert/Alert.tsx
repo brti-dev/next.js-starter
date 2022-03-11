@@ -27,7 +27,11 @@ export type AlertDispatch = {
   dismiss?: boolean
   // Prefix a short phrase like "Critical Error" or "Warning"
   label?: string
+  // Describes the type of alert
   severity?: Severity
+  // Controls whether the assistive technology should read immediately ("assertive") or wait until the user is idle ("polite").
+  type?: 'polite' | 'assertive'
+  // Style variants
   variant?: Variant
 }
 
@@ -55,6 +59,7 @@ function Alert({
   label,
   message: naturalMessage,
   severity,
+  type,
   variant = 'outlined',
 }: AlertProps) {
   const classNames = classnames(
@@ -83,7 +88,13 @@ function Alert({
   }
 
   return (
-    <ReachAlert className={classNames} role="alert" data-severity={severity}>
+    <ReachAlert
+      className={classNames}
+      type={type}
+      role="alert"
+      // aria-label={label || severity || 'alert'}
+      data-severity={severity}
+    >
       {severity && <Icon severity={severity} />}
       <div className="content">
         <div className="message">
