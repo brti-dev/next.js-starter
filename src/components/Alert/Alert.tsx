@@ -62,7 +62,12 @@ function Alert({
   let message = children || naturalMessage
 
   return (
-    <ReachAlert hidden={!message} className={classNames}>
+    <ReachAlert
+      hidden={!message}
+      className={classNames}
+      role="alert"
+      data-severity={severity}
+    >
       {severity && <Icon severity={severity} />}
       <div className="content">
         <div className="message">

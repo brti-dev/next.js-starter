@@ -1,4 +1,7 @@
+export type Severity = 'error' | 'warning' | 'info' | 'success'
+
 export type Color =
+  | Severity
   | 'default'
   | 'primary'
   | 'secondary'
@@ -6,9 +9,5 @@ export type Color =
   | 'green'
   | 'dark'
   | 'light'
-  | 'error'
-  | 'warning'
-  | 'info'
-  | 'success'
 
 export type Variant = 'default' | 'contained' | 'outlined'
