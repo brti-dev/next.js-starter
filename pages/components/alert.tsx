@@ -13,7 +13,7 @@ export default function AvatarComponent() {
       <h1>Alert</h1>
       <p>Error, warning, and other important notes</p>
 
-      <Alert severity="error" label="Critical Error" action="foo">
+      <Alert severity="error" label="Critical Error">
         Something happened
       </Alert>
       <Alert
@@ -30,7 +30,7 @@ export default function AvatarComponent() {
         Velit laborum quis excepteur laboris commodo fugiat incididunt eiusmod
         cillum culpa sit id ipsum ex.
       </Alert>
-      <Alert action={<Button variant="outlined">Ipsum</Button>}>
+      <Alert dismiss>
         Velit do velit est cillum reprehenderit cillum aliqua quis officia velit
         deserunt.
       </Alert>

@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import ReachAlert from '@reach/alert'
 import {
   BiErrorCircle as ErrorIcon,
@@ -5,9 +6,10 @@ import {
   BiCheckCircle as SuccessIcon,
   BiInfoCircle as InfoIcon,
 } from 'react-icons/bi'
+
 import { Severity, Variant } from 'interfaces/theme'
 import classnames from 'lib/classnames'
-import React from 'react'
+import Button from 'components/Button'
 
 const ICONS = {
   error: <ErrorIcon />,
@@ -21,6 +23,8 @@ export type AlertDispatch = {
   message: string | null
   // A button or other call to action
   action?: string | React.ReactElement
+  // Append an action to dismiss the alert; Overwritten by `action`
+  dismiss?: boolean
   // Prefix a short phrase like "Critical Error" or "Warning"
   label?: string
   severity?: Severity
@@ -47,6 +51,7 @@ function Alert({
   action,
   children,
   className,
+  dismiss = false,
   label,
   message: naturalMessage,
   severity,
@@ -59,15 +64,26 @@ function Alert({
     className
   )
 
-  let message = children || naturalMessage
+  let [message, setMessage] = useState(children || naturalMessage)
+
+  if (dismiss && !action) {
+    action = (
+      <Button
+        variant="outlined"
+        color={severity}
+        onClick={() => setMessage(null)}
+      >
+        Dismiss
+      </Button>
+    )
+  }
+
+  if (!message) {
+    return null
+  }
 
   return (
-    <ReachAlert
-      hidden={!message}
-      className={classNames}
-      role="alert"
-      data-severity={severity}
-    >
+    <ReachAlert className={classNames} role="alert" data-severity={severity}>
       {severity && <Icon severity={severity} />}
       <div className="content">
         <div className="message">

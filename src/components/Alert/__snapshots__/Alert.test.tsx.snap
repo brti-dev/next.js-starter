@@ -5,7 +5,6 @@ exports[`renders alert unchanged 1`] = `
   className="alert variant--outlined color--error"
   data-reach-alert={true}
   data-severity="error"
-  hidden={false}
   role="alert"
 >
   <div

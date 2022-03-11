@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom'
 import renderer from 'react-test-renderer'
+import userEvent from '@testing-library/user-event'
 
 import { Severity } from 'interfaces/theme'
 import { render } from '../../../test-utils'
@@ -32,13 +33,6 @@ test('has the proper `severity` attributes', () => {
   })
 })
 
-test('should include a call to action with the `action` prop', () => {
-  const { getByRole } = render(
-    <Alert message="Alert" action={<Button>Act</Button>} />
-  )
-  expect(getByRole('button')).toBeInTheDocument()
-})
-
 test('should output a message using the `message` prop', () => {
   const { getByText } = render(<Alert message="WARNING!" />)
   expect(getByText('WARNING!')).toBeInTheDocument()
@@ -47,4 +41,20 @@ test('should output a message using the `message` prop', () => {
 test('should output a message using the `children` prop', () => {
   const { getByText } = render(<Alert>WARNING!</Alert>)
   expect(getByText('WARNING!')).toBeInTheDocument()
+})
+
+test('should include a call to action with the `action` prop', () => {
+  const { getByRole } = render(
+    <Alert message="Alert" action={<Button>Act</Button>} />
+  )
+  expect(getByRole('button')).toBeInTheDocument()
+})
+
+test('should dismiss', () => {
+  const { getByRole } = render(<Alert dismiss>Alert</Alert>)
+
+  const btn = getByRole('button')
+  expect(btn).toBeInTheDocument()
+  userEvent.click(btn)
+  expect(btn).not.toBeVisible()
 })
