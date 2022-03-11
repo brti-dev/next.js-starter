@@ -20,28 +20,33 @@ Array [
         ✨My App
       </h1>
       <button
-        className="button variant-text color-default size-medium icon "
+        className="button variant--default color--default size--medium button__icon"
         onClick={[Function]}
+        style={Object {}}
         type="button"
       >
-        <svg
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          strokeWidth="0"
-          style={
-            Object {
-              "color": undefined,
-            }
-          }
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
+        <span
+          className="icon-content"
         >
-          <path
-            d="M4 6H20V8H4zM4 11H20V13H4zM4 16H20V18H4z"
-          />
-        </svg>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 6H20V8H4zM4 11H20V13H4zM4 16H20V18H4z"
+            />
+          </svg>
+        </span>
       </button>
     </div>
     <nav
@@ -155,28 +160,33 @@ Array [
       </ul>
     </nav>
     <button
-      className="button variant-text color-default size-medium icon scrollToTop"
+      className="button variant--default color--default size--medium button__icon scrollToTop"
       onClick={[Function]}
+      style={Object {}}
       type="button"
     >
-      <svg
-        fill="currentColor"
-        height="1em"
-        stroke="currentColor"
-        strokeWidth="0"
-        style={
-          Object {
-            "color": undefined,
-          }
-        }
-        viewBox="0 0 24 24"
-        width="1em"
-        xmlns="http://www.w3.org/2000/svg"
+      <span
+        className="icon-content"
       >
-        <path
-          d="M6 4H18V6H6zM6.707 15.707L11 11.414 11 20 13 20 13 11.414 17.293 15.707 18.707 14.293 12 7.586 5.293 14.293z"
-        />
-      </svg>
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 4H18V6H6zM6.707 15.707L11 11.414 11 20 13 20 13 11.414 17.293 15.707 18.707 14.293 12 7.586 5.293 14.293z"
+          />
+        </svg>
+      </span>
     </button>
   </footer>,
 ]
