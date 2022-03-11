@@ -54,8 +54,10 @@ function Badge(props: BadgeProps) {
     contentOutput = `${max}+`
   }
 
+  let hidden = false
   if (content === 0 && !showZero) {
     classNames.push('visually-hidden')
+    hidden = true
   }
 
   if (React.isValidElement(content)) {
@@ -65,7 +67,7 @@ function Badge(props: BadgeProps) {
   return (
     <span className={classes.container}>
       {children}
-      <span className={classNames.join(' ')} {...rest}>
+      <span className={classNames.join(' ')} {...rest} hidden={hidden}>
         {contentOutput}
       </span>
     </span>
