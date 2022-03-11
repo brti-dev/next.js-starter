@@ -9,7 +9,7 @@ export default function FormComponent() {
       <h1>Form</h1>
       <Form onSubmit={() => console.log('Form submit')}>
         <FormGroup
-          label="Name"
+          label="Full Name"
           input={<TextInput name="name" placeholder="Your name" />}
         />
         <FormGroup
@@ -17,7 +17,7 @@ export default function FormComponent() {
           input={<TextInput name="feedback" multiline={true} rows={3} />}
         />
         <FormGroup
-          label="Email"
+          label="Email Address"
           input={<TextInput type="email" name="email" />}
         />
         <SubmitRow>

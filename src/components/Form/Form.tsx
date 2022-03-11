@@ -42,7 +42,7 @@ export function FormGroup({
   const classNames = [classes.formGroup, className]
   if (error) classNames.push(classes.error)
   const classNameString = classNames.filter(i => !!i).join(' ')
-  const id = `form__${label}`
+  const id = `form__${label.replace(/[\s_]+/g, '-').toLowerCase()}`
 
   return (
     <div className={classNameString}>
