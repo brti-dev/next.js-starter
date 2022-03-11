@@ -2,7 +2,7 @@ import { useCallback, useReducer } from 'react'
 
 import Alert, { AlertDispatch } from 'components/Alert'
 
-function reducer(
+export function reducer(
   state: null | AlertDispatch,
   action: null | string | AlertDispatch
 ): null | AlertDispatch {
@@ -14,7 +14,7 @@ function reducer(
     return { message: null }
   }
 
-  return { message: action.message, severity: action.severity }
+  return action
 }
 
 /**

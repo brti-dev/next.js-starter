@@ -3,11 +3,43 @@ import renderer from 'react-test-renderer'
 import userEvent from '@testing-library/user-event'
 
 import { Severity } from 'interfaces/theme'
+import { reducer } from 'lib/use-alert'
 import { render } from '../../../test-utils'
-import Alert from 'components/Alert'
+import Alert, { AlertDispatch } from 'components/Alert'
 import Button from 'components/Button'
+import { AlertHook } from '../../../pages/components/alert'
 
 const SEVERITY = ['error', 'warning', 'info', 'success']
+
+describe('useAlert hook', () => {
+  const initialState: AlertDispatch = {
+    label: 'foo',
+    message: 'lorem',
+    severity: 'info',
+  }
+
+  test('should set up reducer', () => {
+    expect(reducer(null, initialState)).toEqual(initialState)
+  })
+
+  test('alert appears and disappears', () => {
+    const { getByText, queryByText } = render(<AlertHook />)
+
+    const alertBtn = getByText('Alert')
+    const dismissBtn = getByText('Dismiss')
+    const alert = queryByText(/something happened/i) // Query will return node OR null; It will never throw
+
+    expect(alertBtn).toBeInTheDocument()
+    expect(dismissBtn).toBeInTheDocument()
+    expect(alert).toBeNull() // Because null indicates query returned empty
+
+    userEvent.click(alertBtn)
+    expect(alert).not.toBeNull()
+
+    userEvent.click(dismissBtn)
+    expect(alert).toBeNull()
+  })
+})
 
 test('renders alert unchanged', () => {
   const tree = renderer

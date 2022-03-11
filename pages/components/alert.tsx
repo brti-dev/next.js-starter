@@ -5,9 +5,36 @@ import useAlert from 'lib/use-alert'
 import Button from 'components/Button'
 import Link from 'next/link'
 
-export default function AvatarComponent() {
+export function AlertHook() {
   const [AlertComponent, setAlert] = useAlert()
 
+  return (
+    <>
+      <AlertComponent />
+      <div style={{ display: 'flex', gap: '1em', margin: '1em 0' }}>
+        <Button
+          variant="outlined"
+          color="error"
+          onClick={() => setAlert('Something happened')}
+        >
+          Alert
+        </Button>
+        <Button
+          variant="outlined"
+          color="warning"
+          onClick={() => setAlert({ message: 'Danger!', severity: 'warning' })}
+        >
+          Danger
+        </Button>
+        <Button variant="outlined" onClick={() => setAlert(null)}>
+          Dismiss
+        </Button>
+      </div>
+    </>
+  )
+}
+
+export default function AvatarComponent() {
   return (
     <Layout>
       <h1>Alert</h1>
@@ -51,26 +78,7 @@ export default function AvatarComponent() {
   )
 }`}</Code>
       </CodeBlock>
-      <AlertComponent />
-      <div style={{ display: 'flex', gap: '1em', margin: '1em 0' }}>
-        <Button
-          variant="outlined"
-          color="error"
-          onClick={() => setAlert('Something happened')}
-        >
-          Alert
-        </Button>
-        <Button
-          variant="outlined"
-          color="warning"
-          onClick={() => setAlert({ message: 'Danger!', severity: 'warning' })}
-        >
-          Danger
-        </Button>
-        <Button variant="outlined" onClick={() => setAlert(null)}>
-          Reset
-        </Button>
-      </div>
+      <AlertHook />
     </Layout>
   )
 }
