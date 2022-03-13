@@ -9,6 +9,7 @@
   display: flex;
   overflow: hidden;
   position: relative;
+  color: var(--color-font);
   font-size: 1rem;
   align-items: center;
   flex-shrink: 0;
@@ -16,31 +17,7 @@
   user-select: none;
   border-radius: 50%;
   justify-content: center;
-}
-
-.color-default {
-  color: var(--color-font);
-  background-color: var(--color-surface);
-}
-
-.color-primary {
-  color: white;
-  background-color: var(--color-primary);
-}
-
-.color-secondary {
-  color: white;
-  background-color: var(--color-secondary);
-}
-
-.color-red {
-  color: white;
-  background-color: $red;
-}
-
-.color-green {
-  color: white;
-  background-color: $green;
+  background-color: var(--color-background, var(--color-surface));
 }
 
 .group {
@@ -58,4 +35,5 @@
 .excess {
   font-size: 80%;
   background-color: transparent;
+  letter-spacing: -0.05rem;
 }

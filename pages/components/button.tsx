@@ -6,7 +6,16 @@ import Button, { IconButton } from 'components/Button'
 import { BiBell as BellIcon } from 'react-icons/bi'
 import Code, { CodeBlock } from 'components/Code'
 
-const COLORS = ['primary', 'secondary', 'error', 'warning', 'success', 'info']
+const COLORS = [
+  'primary',
+  'secondary',
+  'error',
+  'warning',
+  'success',
+  'info',
+  'light',
+  'dark',
+]
 
 const flex: React.CSSProperties = {
   display: 'flex',
@@ -73,11 +82,6 @@ export default function ButtonComponent() {
           Loading
         </Button>
       </div>
-      <CodeBlock>
-        <Code componentType="Button" loading>
-          Loading
-        </Code>
-      </CodeBlock>
 
       <h2>Anchor Button</h2>
       <p>

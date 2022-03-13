@@ -4,6 +4,7 @@ import {
   OverloadedElement,
   OverloadedElementProps,
 } from 'interfaces/OverloadedElement'
+import { Color } from 'interfaces/theme'
 import Tooltip from 'components/Tooltip'
 import classes from './Avatar.module.scss'
 
@@ -11,7 +12,7 @@ export type AvatarProps = {
   alt: string
   children?: React.ReactNode
   className?: string
-  color?: 'default' | 'primary' | 'secondary' | 'red' | 'green'
+  color?: Color
   size?: number
   src?: string
   tooltip?: string | boolean
@@ -38,7 +39,9 @@ const Avatar: OverloadedElement<AvatarProps> = React.forwardRef<
 
   const classNames = [
     classes.avatar,
-    classes[`color-${color}`],
+    'variant--contained', // Access global colors
+    `color--${color}`,
+    'no-hover',
     className && className,
   ]
 

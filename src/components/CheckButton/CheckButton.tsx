@@ -53,7 +53,8 @@ const CheckButton = forwardRef<HTMLLabelElement, CheckButtonProps>(
           htmlFor={id}
           className={classnames(
             'button variant--outlined',
-            (disabled || loading) && 'disabled'
+            (disabled || loading) && 'disabled',
+            checked && 'checked'
           )}
           data-loading={loading && 'true'}
           ref={ref}
