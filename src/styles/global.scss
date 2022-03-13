@@ -20,7 +20,7 @@ $radius: 0.13rem;
   --color-primary-hover: #{$color-primary-hover-light};
   --color-secondary: #{$color-secondary};
   --color-secondary-hover: #{$color-secondary-hover};
-  --color-surface: #{$color-surface-light};
+  --color-surface: #{$color-surface-light}; // Default color, non-thematic
   --color-surface-hover: #{$color-surface-hover-light};
   --color-comment: #{$color-comment-light};
   --color-error: #{$red};
@@ -32,6 +32,10 @@ $radius: 0.13rem;
   --input-height: 1.8rem;
   --input-height-small: 1.4rem;
   --input-height-large: 2.2rem;
+
+  // Variables set by theme
+  // --color-background: transparent;
+  // --color-border: transparent;
 
   line-height: 100%;
 
@@ -59,6 +63,123 @@ body {
   }
 
   background-color: var(--color-body);
+}
+
+// Theme
+
+.variant--contained {
+  --color-background: var(--color-surface);
+
+  &:hover:not(.no-hover) {
+    --color-background: var(--color-surface-hover);
+  }
+
+  &.color--primary {
+    --color-background: var(--color-primary);
+    --color-font: white;
+    &:hover:not(.no-hover) {
+      --color-background: var(--color-primary-hover);
+    }
+  }
+
+  &.color--secondary {
+    --color-background: var(--color-secondary);
+    --color-font: white;
+    &:hover:not(.no-hover) {
+      --color-background: var(--color-secondary-hover);
+    }
+  }
+
+  &.color--light {
+    --color-font: #{$color-font-light};
+    --color-background: #{$color-surface-light};
+    &:hover:not(.no-hover) {
+      --color-background: #{$color-surface-hover-light};
+    }
+  }
+
+  &.color--dark {
+    --color-font: #{$color-font-dark};
+    --color-background: #{$color-surface-dark};
+    &:hover:not(.no-hover) {
+      --color-background: #{$color-surface-hover-dark};
+    }
+  }
+
+  &.color--red,
+  &.color--error {
+    --color-background: #{$red};
+    --color-font: white;
+    &:hover:not(.no-hover) {
+      --color-background: #{color.scale($red, $lightness: 20%)};
+    }
+  }
+
+  &.color--green,
+  &.color--success {
+    --color-background: #{$green};
+    --color-font: white;
+    &:hover:not(.no-hover) {
+      --color-background: #{color.scale($green, $lightness: 5%)};
+    }
+  }
+
+  &.color--yellow,
+  &.color--warning {
+    --color-background: #{$yellow};
+    --color-font: white;
+    &:hover:not(.no-hover) {
+      --color-background: #{color.scale($yellow, $lightness: 20%)};
+    }
+  }
+
+  &.color--blue,
+  &.color--info {
+    --color-background: #{$blue};
+    --color-font: white;
+    &:hover:not(.no-hover) {
+      --color-background: #{color.scale($blue, $lightness: 20%)};
+    }
+  }
+}
+
+.variant--outlined {
+  --border-width: 2px;
+  --color-border: var(--color-surface);
+
+  &.color--primary {
+    --color-border: var(--color-primary);
+    --color-font: var(--color-primary);
+  }
+
+  &.color--secondary {
+    --color-border: var(--color-secondary);
+    --color-font: var(--color-secondary);
+  }
+
+  &.color--red,
+  &.color--error {
+    --color-border: #{$red};
+    --color-font: #{$red};
+  }
+
+  &.color--green,
+  &.color--success {
+    --color-border: #{$green};
+    --color-font: #{$green};
+  }
+
+  &.color--yellow,
+  &.color--warning {
+    --color-border: #{$yellow};
+    --color-font: #{$yellow};
+  }
+
+  &.color--blue,
+  &.color--info {
+    --color-border: #{$blue};
+    --color-font: #{$blue};
+  }
 }
 
 // Global
@@ -109,7 +230,7 @@ a,
 
   &:hover {
     color: var(--color-primary-hover);
-    border-color: var(--color-primary-hover);
+    --color-border: var(--color-primary-hover);
     text-decoration: underline;
   }
 
@@ -231,6 +352,7 @@ kbd {
 input,
 .input {
   --input-padding: 0.75rem;
+  --color-background: var(--color-surface);
 
   &.variant--outlined {
     --input-padding: calc(0.75rem - 2px);
@@ -260,26 +382,28 @@ button,
   font-size: 0.8rem;
   font-weight: 300;
   color: var(--color-font);
-  border: 0;
+  border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius);
-  background-color: var(--color-surface);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  background-color: var(--color-background);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,
+    opacity 0.3s ease;
   text-decoration: none !important;
   user-select: none;
 
   &:disabled,
   &.disabled {
     cursor: not-allowed;
-    opacity: 0.75;
+    opacity: 0.65;
   }
 
   &:hover {
-    background-color: var(--color-surface-hover);
     border-color: transparent;
-    box-shadow: 0 0 0 2px var(--color-surface-hover);
+    box-shadow: 0 0 0 2px
+      var(--color-border, var(--color-background, var(--color-comment)));
   }
 
-  &:focus {
+  &:focus,
+  .focus {
     border-color: transparent;
     box-shadow: 0 0 0 3px var(--color-comment);
   }
@@ -318,12 +442,11 @@ textarea.input {
   justify-content: center;
   padding: 0;
   cursor: pointer;
-  background: transparent;
 
   &[data-loading='true'] {
     position: relative;
     overflow: hidden;
-    background: var(--color-surface);
+    background: var(--color-background, var(--color-surface));
     cursor: wait;
 
     &::after {
@@ -372,10 +495,6 @@ textarea.input {
     overflow: hidden;
     display: inline-block;
   }
-
-  &:hover:not(.variant--close) {
-    background: var(--color-surface-hover);
-  }
 }
 
 // Components
@@ -385,10 +504,12 @@ textarea.input {
   align-items: flex-start;
   gap: 0.5em;
   padding: 0.5em;
+  border: var(--border-width) solid var(--color-border);
   border-radius: var(--radius);
-  letter-spacing: 0.01071em;
-  background: transparent;
+  color: var(--color-font);
   line-height: 1.43;
+  letter-spacing: 0.01071em;
+  background: var(--color-background);
 
   .icon {
     display: flex;
@@ -611,116 +732,6 @@ textarea.input {
 
 .surface {
   @extend %surface;
-}
-
-// Theme
-
-.variant--contained {
-  background-color: var(--color-surface);
-
-  &:hover:not(.no-hover) {
-    background-color: var(--color-surface-hover);
-  }
-
-  &.color--primary {
-    background-color: var(--color-primary);
-    color: white;
-    &:hover:not(.no-hover) {
-      background-color: var(--color-primary-hover);
-    }
-  }
-
-  &.color--secondary {
-    background-color: var(--color-secondary);
-    color: white;
-    &:hover:not(.no-hover) {
-      background-color: var(--color-secondary-hover);
-    }
-  }
-
-  &.color--light {
-    color: $color-font-light;
-    background-color: $color-body-light;
-  }
-
-  &.color--dark {
-    color: $color-font-dark;
-    background-color: $color-body-dark;
-  }
-
-  &.color--red,
-  &.color--error {
-    background-color: $red;
-    color: white;
-    &:hover:not(.no-hover) {
-      background-color: color.scale($red, $lightness: 20%);
-    }
-  }
-
-  &.color--green,
-  &.color--success {
-    background-color: $green;
-    color: white;
-    &:hover:not(.no-hover) {
-      background-color: color.scale($green, $lightness: 5%);
-    }
-  }
-
-  &.color--yellow,
-  &.color--warning {
-    background-color: $yellow;
-    color: white;
-    &:hover:not(.no-hover) {
-      background-color: color.scale($yellow, $lightness: 20%);
-    }
-  }
-
-  &.color--blue,
-  &.color--info {
-    background-color: $blue;
-    color: white;
-    &:hover:not(.no-hover) {
-      background-color: color.scale($blue, $lightness: 20%);
-    }
-  }
-}
-
-.variant--outlined {
-  border: 2px solid var(--color-surface);
-
-  &.color--primary {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-  }
-
-  &.color--secondary {
-    border-color: var(--color-secondary);
-    color: var(--color-secondary);
-  }
-
-  &.color--red,
-  &.color--error {
-    border-color: $red;
-    color: $red;
-  }
-
-  &.color--green,
-  &.color--success {
-    border-color: $green;
-    color: $green;
-  }
-
-  &.color--yellow,
-  &.color--warning {
-    border-color: $yellow;
-    color: $yellow;
-  }
-
-  &.color--blue,
-  &.color--info {
-    border-color: $blue;
-    color: $blue;
-  }
 }
 
 // Animations

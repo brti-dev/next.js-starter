@@ -11,7 +11,7 @@
 
 .checkButton {
   label {
-    opacity: 0.8;
+    opacity: 0.65;
 
     &:hover {
       opacity: 1;
@@ -19,8 +19,8 @@
   }
 
   input:checked + label {
+    --color-border: var(--color-font);
     opacity: 1;
-    border-color: var(--color-font);
   }
 
   // input:focus + label {
