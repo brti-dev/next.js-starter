@@ -23,10 +23,9 @@ type CodeType = {
 export function CodeBlock({ children }) {
   return (
     <pre
+      className="surface"
       style={{
-        padding: '1em 5%',
         overflow: 'auto',
-        background: 'var(--color-surface)',
         counterReset: 'linenumbers',
         lineHeight: 1,
       }}
