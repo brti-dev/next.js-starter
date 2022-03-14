@@ -79,6 +79,22 @@ test('should work with different sizes', () => {
   expect(tree).toMatchSnapshot()
 })
 
+test('should work with different shapes', () => {
+  const shapes = ['circle', 'square']
+  const tree = renderer
+    .create(
+      <>
+        {shapes.map((shape: 'circle' | 'square') => (
+          <Button shape={shape} key={shape}>
+            {shape}
+          </Button>
+        ))}
+      </>
+    )
+    .toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
 test('should trigger a callback onClick', () => {
   const ButtonComponent = () => {
     const [clicks, setClicks] = useState(0)

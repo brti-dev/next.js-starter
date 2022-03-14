@@ -20,13 +20,13 @@ Array [
         ✨My App
       </h1>
       <button
-        className="button variant--default color--default size--medium button__icon"
+        className="button color--default shape--circle size--medium variant--default"
         onClick={[Function]}
         style={Object {}}
         type="button"
       >
         <span
-          className="icon-content"
+          className="text-content"
         >
           <svg
             fill="currentColor"
@@ -160,13 +160,13 @@ Array [
       </ul>
     </nav>
     <button
-      className="button variant--default color--default size--medium button__icon scrollToTop"
+      className="button color--default shape--circle size--medium variant--default scrollToTop"
       onClick={[Function]}
       style={Object {}}
       type="button"
     >
       <span
-        className="icon-content"
+        className="text-content"
       >
         <svg
           fill="currentColor"

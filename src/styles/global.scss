@@ -29,7 +29,7 @@ $radius: 0.13rem;
   --color-success: #{$green};
   --spacing: #{$spacing-small};
   --radius: #{$radius};
-  --shadow: 2px 2px 5px #{$color-comment-dark};
+  --shadow: 2px 2px 2px #3a3b3c57;
   --input-height: 1.8rem;
   --input-height-small: 1.4rem;
   --input-height-large: 2.2rem;
@@ -68,6 +68,41 @@ body {
 }
 
 // Theme
+
+.variant--default {
+  &.color--primary {
+    --color-font: var(--color-primary);
+  }
+  &.color--secondary {
+    --color-font: var(--color-secondary);
+  }
+  &.color--light {
+    --color-font: #{$color-font-light};
+  }
+  &.color--dark {
+    --color-font: #{$color-font-dark};
+  }
+  &.color--red,
+  &.color--error {
+    --color-font: #{$red};
+  }
+  &.color--green,
+  &.color--success {
+    --color-font: #{$green};
+  }
+  &.color--yellow,
+  &.color--warning {
+    --color-font: #{$yellow};
+  }
+  &.color--blue,
+  &.color--info {
+    --color-font: #{$blue};
+  }
+
+  &:not(.color--default) {
+    --color-border: var(--color-font);
+  }
+}
 
 .variant--contained {
   --color-background: var(--color-surface);
@@ -232,7 +267,6 @@ a,
 
   &:hover {
     color: var(--color-primary-hover);
-    --color-border: var(--color-primary-hover);
     text-decoration: underline;
   }
 
@@ -401,7 +435,8 @@ button,
   &:hover {
     border-color: transparent;
     box-shadow: 0 0 0 2px
-      var(--color-border, var(--color-background, var(--color-comment)));
+      var(--color-border, var(--color-background, var(--color-surface)));
+    color: var(--color-font);
   }
 
   &:focus,
@@ -438,11 +473,11 @@ textarea.input {
 
 .button {
   display: inline-flex;
-  gap: 0.5em;
+  justify-content: center;
   vertical-align: middle;
   align-items: center;
-  justify-content: center;
-  padding: 0;
+  gap: calc(var(--input-padding) / 2);
+  min-width: 0;
   cursor: pointer;
 
   &[data-loading='true'] {
@@ -469,11 +504,17 @@ textarea.input {
     }
   }
 
-  &__icon {
-    border-radius: 50%;
+  &.shape--circle {
+    --radius: 50%;
+  }
+  &.shape--circle,
+  &.shape--square {
     width: var(--input-height);
+    padding: 0;
+    border-radius: var(--radius);
 
-    &.variant--default {
+    &.variant--default,
+    &.variant--close {
       box-shadow: none !important;
     }
 
@@ -484,18 +525,27 @@ textarea.input {
     &.size--large {
       width: var(--input-height-large);
     }
+
+    .prepend-content,
+    .append-content {
+      display: none !important;
+    }
+
+    .text-content {
+      display: flex !important;
+    }
   }
 
-  .icon-content {
+  .prepend-content,
+  .append-content {
     display: flex;
   }
 
   .text-content {
-    padding: 0 var(--input-padding);
+    display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    display: inline-block;
   }
 }
 

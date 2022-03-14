@@ -6,34 +6,52 @@ import classnames from 'lib/classnames'
 
 type Percent = `${number}%`
 
-export type ButtonProps = {
-  type?: 'button' | 'reset' | 'submit'
-  variant?: Variant | 'link' | 'close'
-  color?: Color
-  size?: 'small' | 'medium' | 'large'
-  width?: number | Percent
-  className?: string
-  to?: string
-  disabled?: boolean
-  loading?: boolean
-  icon?: boolean
+interface Props {
+  // Stuff to put on the right side of children
+  append?: React.ReactNode
+  // Main content
   children: React.ReactNode
-} & React.ComponentPropsWithRef<'button'> &
-  React.ComponentPropsWithRef<'a'>
+  className?: string
+  color?: Color
+  disabled?: boolean
+  // Indicate if there is a loading process happening; Disables the button if true
+  loading?: boolean
+  // Stuff to put on the left side of children
+  prepend?: React.ReactNode
+  // Circle and square are ideal for icons or monograms
+  shape?: 'default' | 'square' | 'circle'
+  // Medium by default
+  size?: 'small' | 'medium' | 'large'
+  // A URL location; Changes the button into a hyperlink
+  to?: string
+  type?: 'button' | 'reset' | 'submit'
+  variant?: Variant
+  // Apply a fixed width
+  width?: number | Percent
+}
+
+type NativeAttrs = Omit<React.ButtonHTMLAttributes<any>, keyof Props>
+
+export type ButtonProps = Props & NativeAttrs
+
+// export type ButtonProps =  & React.ComponentPropsWithRef<'button'> &
+//   React.ComponentPropsWithRef<'a'>
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
-    type = 'button',
-    variant = 'default',
-    color = 'default',
-    size = 'medium',
-    width,
+    append,
+    children,
     className,
-    to,
+    color = 'default',
     disabled = false,
     loading = false,
-    icon = false,
-    children,
+    prepend,
+    shape,
+    size = 'medium',
+    to,
+    type = 'button',
+    variant = 'default',
+    width,
     ...rest
   } = props
 
@@ -47,18 +65,27 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   const classNameString = classnames(
     'button', // Give access to global button style shared with other inputs
-    `variant--${variant}`,
     `color--${color}`,
+    shape && `shape--${shape}`,
     `size--${size}`,
-    icon && 'button__icon',
+    `variant--${variant}`,
+    !!to && 'no-hover',
     className
+  )
+
+  const content = (
+    <>
+      {prepend && <span className="prepend-content">{prepend}</span>}
+      <span className="text-content">{children}</span>
+      {append && <span className="append-content ">{append}</span>}
+    </>
   )
 
   if (to) {
     return (
       <Link href={to}>
-        <a className={classNameString} {...rest}>
-          <span className="text-content">{children}</span>
+        <a className={classNameString} style={style} {...rest}>
+          {content}
         </a>
       </Link>
     )
@@ -74,7 +101,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       ref={ref}
       {...rest}
     >
-      <span className={`${icon ? 'icon' : 'text'}-content`}>{children}</span>
+      {content}
     </button>
   )
 })

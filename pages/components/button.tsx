@@ -75,7 +75,7 @@ export default function ButtonComponent() {
       </p>
       <div style={flex}>
         <Button loading={loading} onClick={() => toggleLoading()}>
-          {loading ? 'Loading' : 'Click Me'}
+          Click Me
         </Button>
         <Button loading>Loading</Button>
         <Button variant="contained" color="primary" loading>
@@ -88,7 +88,14 @@ export default function ButtonComponent() {
         <Code>{'to={string}'}</Code>
       </p>
       <p>Create a button-like link.</p>
-      <Button to="/">Home</Button>
+      <div style={flex}>
+        <Button to="/" color="primary">
+          Home
+        </Button>
+        <Button to="/" variant="contained" color="primary">
+          Home
+        </Button>
+      </div>
       <CodeBlock>
         <Code componentType="Button" to="/">
           Home
@@ -97,26 +104,66 @@ export default function ButtonComponent() {
 
       <h2>Icon Button</h2>
       <div style={flex}>
-        <IconButton>
+        <Button shape="circle">
           <BellIcon />
-        </IconButton>
-        <IconButton variant="outlined">
+        </Button>
+        <Button shape="circle" variant="outlined">
           <BellIcon />
-        </IconButton>
-        <IconButton variant="contained">
+        </Button>
+        <Button shape="circle" variant="contained">
           <BellIcon />
-        </IconButton>
+        </Button>
+        <Button shape="square" variant="outlined">
+          <BellIcon />
+        </Button>
+        <Button shape="square" variant="contained">
+          <BellIcon />
+        </Button>
       </div>
       <CodeBlock>
-        <Code>{`<IconButton>
+        <Code>{`<Button shape="circle">
   <BellIcon />
-</IconButton>
-<IconButton variant="outlined">
+</Button>
+<Button shape="circle" variant="outlined">
   <BellIcon />
-</IconButton>
-<IconButton variant="contained">
+</Button>
+<Button shape="circle" variant="contained">
   <BellIcon />
-</IconButton>`}</Code>
+</Button>
+<Button shape="square" variant="outlined">
+  <BellIcon />
+</Button>
+<Button shape="square" variant="contained">
+  <BellIcon />
+</Button>`}</Code>
+      </CodeBlock>
+
+      <h2>Icon Button Content</h2>
+      <div style={flex}>
+        <Button prepend={<BellIcon />} variant="contained">
+          Alerts
+        </Button>
+        <Button append={<BellIcon />} variant="contained">
+          Alerts
+        </Button>
+        <Button
+          prepend={<BellIcon />}
+          append={<BellIcon />}
+          variant="contained"
+        >
+          So Many Alerts
+        </Button>
+      </div>
+      <CodeBlock>
+        <Code>{`<Button prepend={<BellIcon />}>
+  Alerts
+</Button>
+<Button append={<BellIcon />}>
+  Alerts
+</Button>
+<Button prepend={<BellIcon />} append={<BellIcon />}>
+  So Many Alerts
+</Button>`}</Code>
       </CodeBlock>
 
       <h2>Other Props</h2>
@@ -127,10 +174,16 @@ export default function ButtonComponent() {
       <p>
         <code>{`width={number | percent}`}</code>
       </p>
-      <Button width="50%" variant="contained" color="primary">
-        Minim eu exercitation pariatur cillum eiusmod occaecat enim proident
-        ipsum.
-      </Button>
+      <p>Text will overflow or center on fixed-width buttons.</p>
+      <div style={{ ...flex, flexWrap: 'nowrap' }}>
+        <Button width="50%" variant="contained" color="primary">
+          Minim eu exercitation pariatur cillum eiusmod occaecat enim proident
+          ipsum.
+        </Button>
+        <Button width="50%" variant="contained" color="warning">
+          Foo
+        </Button>
+      </div>
 
       <h3>
         <code>size</code>
@@ -145,6 +198,15 @@ export default function ButtonComponent() {
         <Button variant="contained">Medium</Button>
         <Button variant="contained" size="large">
           Large
+        </Button>
+        <Button variant="contained" size="small" shape="circle">
+          <BellIcon />
+        </Button>
+        <Button variant="contained" size="medium" shape="circle">
+          <BellIcon />
+        </Button>
+        <Button variant="contained" size="large" shape="circle">
+          <BellIcon />
         </Button>
       </div>
     </Layout>

@@ -5,9 +5,13 @@ export type IconButtonProps = ButtonProps & {
   tooltip?: string
 }
 
-function IconButton({ children, ...rest }: any) {
+/**
+ * Sugar for <Button shape="circle"><Icon /></Button>
+ * <Button> is preferred; This component may be depreciated in future
+ */
+function IconButton({ children, shape = 'circle', ...rest }: IconButtonProps) {
   return (
-    <Button icon={true} {...rest}>
+    <Button shape={shape} {...rest}>
       {children}
     </Button>
   )

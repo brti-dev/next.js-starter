@@ -2,7 +2,7 @@
 
 exports[`should render correctly 1`] = `
 <button
-  className="button variant--contained color--primary size--small"
+  className="button color--primary size--small variant--contained"
   style={
     Object {
       "width": "50px",
@@ -20,12 +20,12 @@ exports[`should render correctly 1`] = `
 
 exports[`should render icon button correctly 1`] = `
 <button
-  className="button variant--default color--default size--medium button__icon"
+  className="button color--default shape--circle size--medium variant--default"
   style={Object {}}
   type="button"
 >
   <span
-    className="icon-content"
+    className="text-content"
   >
     icon
   </span>
@@ -35,7 +35,7 @@ exports[`should render icon button correctly 1`] = `
 exports[`should work with different colors 1`] = `
 Array [
   <button
-    className="button variant--default color--primary size--medium"
+    className="button color--primary size--medium variant--default"
     style={Object {}}
     type="button"
   >
@@ -46,7 +46,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--default color--secondary size--medium"
+    className="button color--secondary size--medium variant--default"
     style={Object {}}
     type="button"
   >
@@ -57,7 +57,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--default color--error size--medium"
+    className="button color--error size--medium variant--default"
     style={Object {}}
     type="button"
   >
@@ -68,7 +68,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--default color--warning size--medium"
+    className="button color--warning size--medium variant--default"
     style={Object {}}
     type="button"
   >
@@ -79,7 +79,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--default color--info size--medium"
+    className="button color--info size--medium variant--default"
     style={Object {}}
     type="button"
   >
@@ -90,7 +90,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--default color--success size--medium"
+    className="button color--success size--medium variant--default"
     style={Object {}}
     type="button"
   >
@@ -101,7 +101,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--default color--dark size--medium"
+    className="button color--dark size--medium variant--default"
     style={Object {}}
     type="button"
   >
@@ -112,7 +112,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--default color--light size--medium"
+    className="button color--light size--medium variant--default"
     style={Object {}}
     type="button"
   >
@@ -125,10 +125,37 @@ Array [
 ]
 `;
 
+exports[`should work with different shapes 1`] = `
+Array [
+  <button
+    className="button color--default shape--circle size--medium variant--default"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      circle
+    </span>
+  </button>,
+  <button
+    className="button color--default shape--square size--medium variant--default"
+    style={Object {}}
+    type="button"
+  >
+    <span
+      className="text-content"
+    >
+      square
+    </span>
+  </button>,
+]
+`;
+
 exports[`should work with different sizes 1`] = `
 Array [
   <button
-    className="button variant--default color--default size--small"
+    className="button color--default size--small variant--default"
     style={Object {}}
     type="button"
   >
@@ -139,7 +166,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--default color--default size--medium"
+    className="button color--default size--medium variant--default"
     style={Object {}}
     type="button"
   >
@@ -150,7 +177,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--default color--default size--large"
+    className="button color--default size--large variant--default"
     style={Object {}}
     type="button"
   >
@@ -166,7 +193,7 @@ Array [
 exports[`should work with different variants 1`] = `
 Array [
   <button
-    className="button variant--default color--default size--medium"
+    className="button color--default size--medium variant--default"
     style={Object {}}
     type="button"
   >
@@ -177,7 +204,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--outlined color--default size--medium"
+    className="button color--default size--medium variant--outlined"
     style={Object {}}
     type="button"
   >
@@ -188,7 +215,7 @@ Array [
     </span>
   </button>,
   <button
-    className="button variant--contained color--default size--medium"
+    className="button color--default size--medium variant--contained"
     style={Object {}}
     type="button"
   >
