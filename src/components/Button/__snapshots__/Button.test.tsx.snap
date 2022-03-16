@@ -11,7 +11,7 @@ exports[`should render correctly 1`] = `
   type="button"
 >
   <span
-    className="text-content"
+    className="main-content"
   >
     Button
   </span>
@@ -25,7 +25,7 @@ exports[`should render icon button correctly 1`] = `
   type="button"
 >
   <span
-    className="text-content"
+    className="main-content"
   >
     icon
   </span>
@@ -40,7 +40,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       primary
     </span>
@@ -51,7 +51,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       secondary
     </span>
@@ -62,7 +62,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       error
     </span>
@@ -73,7 +73,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       warning
     </span>
@@ -84,7 +84,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       info
     </span>
@@ -95,7 +95,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       success
     </span>
@@ -106,7 +106,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       dark
     </span>
@@ -117,7 +117,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       light
     </span>
@@ -133,7 +133,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       circle
     </span>
@@ -144,7 +144,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       square
     </span>
@@ -160,7 +160,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       small
     </span>
@@ -171,7 +171,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       medium
     </span>
@@ -182,7 +182,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       large
     </span>
@@ -198,7 +198,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       default
     </span>
@@ -209,7 +209,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       outlined
     </span>
@@ -220,7 +220,7 @@ Array [
     type="button"
   >
     <span
-      className="text-content"
+      className="main-content"
     >
       contained
     </span>

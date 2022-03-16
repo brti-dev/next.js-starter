@@ -26,7 +26,7 @@ Array [
         type="button"
       >
         <span
-          className="text-content"
+          className="main-content"
         >
           <svg
             fill="currentColor"
@@ -166,7 +166,7 @@ Array [
       type="button"
     >
       <span
-        className="text-content"
+        className="main-content"
       >
         <svg
           fill="currentColor"

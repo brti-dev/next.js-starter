@@ -75,9 +75,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   const content = (
     <>
-      {prepend && <span className="prepend-content">{prepend}</span>}
-      <span className="text-content">{children}</span>
-      {append && <span className="append-content ">{append}</span>}
+      {prepend && (
+        <span className="prepend-content" aria-hidden>
+          {prepend}
+        </span>
+      )}
+      <span className="main-content">{children}</span>
+      {append && (
+        <span className="append-content" aria-hidden>
+          {append}
+        </span>
+      )}
     </>
   )
 
