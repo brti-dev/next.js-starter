@@ -8,6 +8,7 @@ const COMPONENTS = [
   'badge',
   'button',
   'checkbutton',
+  'dialog',
   'form',
   'menu',
   'tooltip',
