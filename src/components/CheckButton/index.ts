@@ -1,4 +1,2 @@
-import CheckButton, { CheckButtonProps, CheckButtonGroup } from './CheckButton'
-
-export { CheckButton as default, CheckButtonGroup }
-export type { CheckButtonProps }
+export * from './check-button'
+export { default } from './check-button'

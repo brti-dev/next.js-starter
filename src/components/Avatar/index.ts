@@ -1,4 +1,3 @@
-import Avatar, { AvatarProps, AvatarGroup, AvatarGroupProps } from './Avatar'
-
-export { Avatar as default, AvatarGroup }
-export type { AvatarProps, AvatarGroupProps }
+export * from './avatar'
+export * from './avatar-group'
+export { default } from './avatar'

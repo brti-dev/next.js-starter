@@ -4,7 +4,8 @@ import renderer from 'react-test-renderer'
 
 import { render } from '../../../test-utils'
 import { Color } from 'interfaces/theme'
-import Badge from './Badge'
+import { COLORS } from 'lib/constants'
+import Badge from '.'
 
 test('should render correctly', () => {
   const tree = renderer.create(<Badge variant="dot">B</Badge>).toJSON()
@@ -21,16 +22,7 @@ test('should work with different colors', () => {
   const tree = renderer
     .create(
       <>
-        {[
-          'primary',
-          'secondary',
-          'error',
-          'warning',
-          'info',
-          'success',
-          'dark',
-          'light',
-        ].map((color: Color) => (
+        {COLORS.map((color: Color) => (
           <Badge color={color} variant="dot" key={color}>
             {color.substring(0, 2)}
           </Badge>

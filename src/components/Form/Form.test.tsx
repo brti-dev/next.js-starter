@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 
 import { getByPlaceholderText, render, screen } from '../../../test-utils'
-import { Form, FormGroup, TextInput } from './Form'
+import { Form, FormGroup, TextInput } from '.'
 
 test('renders a form and label with text input', () => {
   const label = 'foo'

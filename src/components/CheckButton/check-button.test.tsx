@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 
 import { render, screen } from '../../../test-utils'
-import CheckButton, { CheckButtonGroup } from './CheckButton'
+import CheckButton, { CheckButtonGroup } from '.'
 import userEvent from '@testing-library/user-event'
 
 const CheckButtons = ({ checked, setChecked = () => {} }: any) => (
