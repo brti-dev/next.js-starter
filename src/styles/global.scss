@@ -38,6 +38,9 @@ $radius: 0.13rem;
   // --color-background: transparent;
   // --color-border: transparent;
 
+  // Animation variables
+  --bouncy: cubic-bezier(1, -1, 0, 2);
+
   line-height: 100%;
 
   @include breakpoint(screen) {
@@ -255,8 +258,8 @@ h2,
   letter-spacing: -0.5px;
 }
 
-a,
-.a {
+a:not(.button),
+.a:not(.button) {
   color: var(--color-primary);
   text-decoration: none;
   cursor: pointer;
@@ -402,6 +405,12 @@ button,
   &.variant--outlined {
     --input-padding: calc(0.95rem - 2px);
   }
+
+  // On dialog, close button has focus on open
+  // Problem: need to indicate focus without distraction
+  &.button__close {
+    --color-comment: rgba(0, 0, 0, 0.05);
+  }
 }
 
 input,
@@ -513,8 +522,8 @@ textarea.input {
     padding: 0;
     border-radius: var(--radius);
 
-    &.variant--default,
-    &.variant--close {
+    &.variant--default:hover:not(:focus),
+    &.variant--close:hover:not(:focus) {
       box-shadow: none !important;
     }
 
@@ -531,7 +540,7 @@ textarea.input {
       display: none !important;
     }
 
-    .text-content {
+    .main-content {
       display: flex !important;
     }
   }
@@ -541,7 +550,7 @@ textarea.input {
     display: flex;
   }
 
-  .text-content {
+  .main-content {
     display: inline-block;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -663,18 +672,29 @@ textarea.input {
 
 .modal,
 [data-reach-dialog-content] {
+  @extend %surface;
   width: 50vw;
+  height: auto;
   margin: 10vh auto;
-  background: var(--color-surface);
-  padding: 2rem;
+  transition: all 0.3s ease;
   outline: none;
 
-  .close-button {
+  &[data-fullscreen] {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .button__close {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
-    line-height: 0.6rem;
-    font-size: 2rem;
+    top: 0.5rem;
+    right: 0.5rem;
+    transition: transform 0.3s var(--bouncy);
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }
 
