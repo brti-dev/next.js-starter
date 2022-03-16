@@ -1,9 +1,9 @@
-import Layout from 'components/Layout'
-import Alert from 'components/Alert'
-import Code, { CodeBlock } from 'components/Code'
-import useAlert from 'lib/use-alert'
-import Button from 'components/Button'
 import Link from 'next/link'
+import Alert from 'components/Alert'
+import Button from 'components/Button'
+import Code, { CodeBlock } from 'components/Code'
+import Layout from 'components/Layout'
+import useAlert from 'lib/use-alert'
 
 export function AlertHook() {
   const [AlertComponent, setAlert] = useAlert()

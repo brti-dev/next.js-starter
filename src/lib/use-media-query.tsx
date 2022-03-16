@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react'
  * @returns {boolean} True if the query conditions are present, false otherwise
  * @example
  * function App() {
- *   const isScreenMobile = useMediaQuery('(min-width: 800px)')
+ *   const isScreenMobile = useMediaQuery('(max-width: 640px)')
  *   return isScreenMobile ? <SmallComponent /> : <LargeComponent />
  * }
  */

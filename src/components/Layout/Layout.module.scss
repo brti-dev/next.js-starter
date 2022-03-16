@@ -120,7 +120,7 @@
   position: absolute;
   bottom: 0;
   right: var(--spacing);
-  transition: transform 0.2s ease-in-out 0s;
+  transition: transform 0.2s ease-in-out;
 
   @include breakpoint(screen) {
     bottom: unset;
