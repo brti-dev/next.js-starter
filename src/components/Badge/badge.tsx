@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Color } from 'interfaces/theme'
-import classes from './Badge.module.scss'
+import classes from './badge.module.scss'
 
 type BadgePropsBase = {
   children: React.ReactNode

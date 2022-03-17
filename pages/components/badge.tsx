@@ -1,11 +1,12 @@
-import Layout from 'components/Layout'
-import Badge from 'components/Badge'
-import Avatar from 'components/Avatar'
-import Code, { CodeBlock } from 'components/Code'
-import { IconButton } from 'components/Button'
 import { BiBell as BellIcon } from 'react-icons/bi'
 
-const COLORS = ['primary', 'secondary', 'red', 'green', 'dark', 'light']
+import { COLORS } from 'lib/constants'
+import Avatar from 'components/Avatar'
+import Badge from 'components/Badge'
+import { IconButton } from 'components/Button'
+import Code, { CodeBlock } from 'components/Code'
+import Layout from 'components/Layout'
+
 const SIZES = ['small', 'medium', 'large', 50]
 
 export default function BadgeComponent() {

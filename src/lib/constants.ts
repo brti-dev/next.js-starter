@@ -1,4 +1,6 @@
-export const COLORS = [
+import { Color } from 'interfaces/theme'
+
+export const COLORS: Color[] = [
   'primary',
   'secondary',
   'error',

@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import Avatar from '.'
-import classes from './Avatar.module.scss'
+import classes from './avatar.module.scss'
 
 export type AvatarGroupProps = {
   max?: number

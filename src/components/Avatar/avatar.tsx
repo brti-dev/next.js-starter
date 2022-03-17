@@ -6,7 +6,7 @@ import {
 } from 'interfaces/OverloadedElement'
 import { Color } from 'interfaces/theme'
 import Tooltip from 'components/Tooltip'
-import classes from './Avatar.module.scss'
+import classes from './avatar.module.scss'
 
 export type AvatarProps = {
   alt: string
