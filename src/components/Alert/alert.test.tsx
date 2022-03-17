@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import userEvent from '@testing-library/user-event'
 
 import { Severity, Variant } from 'interfaces/theme'
-import { reducer } from 'lib/use-alert'
+import { reducer } from 'components/Alert/use-alert'
 import { render, screen } from '../../../test-utils'
 import Alert, { AlertDispatch } from 'components/Alert'
 import Button from 'components/Button'

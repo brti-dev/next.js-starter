@@ -25,7 +25,7 @@ export function reducer(
  * @returns {JSX.Element} Alert component to render
  * @returns {function} Function to set alert message
  */
-function useAlert(
+export function useAlert(
   initialState?: string | AlertDispatch
 ): [React.ComponentType, any] {
   const [alert, setAlert] = useReducer(reducer, reducer(null, initialState))
@@ -38,5 +38,3 @@ function useAlert(
 
   return [component, setAlert]
 }
-
-export default useAlert
