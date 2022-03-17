@@ -1,4 +1,4 @@
-import classes from './Form.module.scss'
+import classes from './form.module.scss'
 
 export type FormProps = {
   children: React.ReactChild | React.ReactChild[]

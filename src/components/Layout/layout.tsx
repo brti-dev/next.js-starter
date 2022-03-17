@@ -14,7 +14,7 @@ import config from '../../../package.json'
 import scrollToTop from 'lib/scroll-to-top'
 import useMediaQuery from 'lib/use-media-query'
 import { IconButton } from 'components/Button'
-import classes from './Layout.module.scss'
+import classes from './layout.module.scss'
 
 const { pages, siteTitle } = config
 

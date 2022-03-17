@@ -5,7 +5,7 @@ import {
   OverloadedElementProps,
 } from 'interfaces/OverloadedElement'
 import classnames from 'lib/classnames'
-import classes from './CheckButton.module.scss'
+import classes from './check-button.module.scss'
 
 export type CheckButtonProps = {
   name: string
