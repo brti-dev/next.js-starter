@@ -34,13 +34,6 @@
     "test": "jest --watch"
   },
   "dependencies": {
-    "@reach/alert": "^0.15.0",
-    "@reach/dialog": "^0.15.0",
-    "@reach/menu-button": "^0.15.3",
-    "@reach/skip-nav": "^0.15.0",
-    "@reach/tooltip": "^0.13.2",
-    "@reach/visually-hidden": "^0.15.0",
-    "date-fns": "^2.19.0",
     "next": "^12.1.0",
     "normalize.css": "^8.0.1",
     "react": "17.0.2",

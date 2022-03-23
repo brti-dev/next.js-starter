@@ -13,7 +13,7 @@ import '@reach/skip-nav/styles.css'
 import config from '../../../package.json'
 import scrollToTop from 'lib/scroll-to-top'
 import useMediaQuery from 'lib/use-media-query'
-import { IconButton } from 'components/Button'
+import { IconButton } from 'matterial/Button'
 import classes from './layout.module.scss'
 
 const { pages, siteTitle } = config
