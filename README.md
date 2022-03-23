@@ -1,4 +1,4 @@
-This is a starter for a Next.js app bootstrapped with TypeScript. It includes CSS for a responsive app, light and dark themes based on `prefers-color-scheme` media query, a design system with tested common UI components, and helper React hooks.
+This is a starter for a Next.js app bootstrapped with TypeScript and test suites. It's packaged with helper libraries, React hooks, and [Matterial UI](https://matterial.brti.dev), a design system with tested and accessible UI components, responsive page design, and automated light and dark themes based on `prefers-color-scheme` media query.
 
 ## Getting Started
 
@@ -7,8 +7,6 @@ If using as a starter for a new app:
 ```bash
 npx create-next-app nextjs-blog --use-npm --example "https://github.com/dr-spaceman/next.js-starter"
 ```
-
-To merge config to an existing app, see section on merging below.
 
 After initializing the app run the development server:
 
@@ -20,7 +18,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file and save your changes.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
@@ -32,7 +30,7 @@ Tests use Jest and React Testing Library to test UI components and units. Use `n
 
 ## Config
 
-Currently configured for [static export](https://nextjs.org/docs/advanced-features/static-html-export). To deploy another way:
+### [Static Export](https://nextjs.org/docs/advanced-features/static-html-export)
 
 1. In `next.config.js` set `trailingSlash` to `false`.
 2. Run `next build` instead of `npm run build`
@@ -45,7 +43,7 @@ Currently configured for [static export](https://nextjs.org/docs/advanced-featur
 
 ## UI Component Documentation
 
-This started comes packaged with a selection of common UI components. See [UI Components documentation](https://next-js-starter-3nqkw5h5m-dr-spaceman.vercel.app/components/) for instructions on the use of a some of the components available.
+This starter comes packaged with a selection of common UI components. See [Matterial UI documentation](https://matterial.brti.dev) for instructions on the use of a some of the components available.
 
 ## Used to Build
 
