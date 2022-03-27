@@ -1,6 +1,6 @@
 {
   "name": "next.js-starter",
-  "version": "0.1.1",
+  "version": "2.0.0",
   "description": "Bootstrap a new Next.js app",
   "private": false,
   "license": "ISC",
@@ -12,16 +12,12 @@
       "title": "Home"
     },
     {
-      "link": "/components",
-      "title": "UI Components"
-    },
-    {
       "link": "/foo",
       "title": "Foo"
     },
     {
-      "link": "/sandbox",
-      "title": "Test Page"
+      "link": "/bar",
+      "title": "Bar"
     }
   ],
   "scripts": {
