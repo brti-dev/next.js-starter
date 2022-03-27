@@ -5,7 +5,7 @@ This is a starter for a Next.js app bootstrapped with TypeScript and test suites
 If using as a starter for a new app:
 
 ```bash
-npx create-next-app nextjs-blog --use-npm --example "https://github.com/dr-spaceman/next.js-starter"
+npx create-next-app my-app --use-npm --example "https://github.com/dr-spaceman/next.js-starter"
 ```
 
 After initializing the app run the development server:
@@ -18,7 +18,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file and save your changes.
+Config vars are stored in `package.json`. Edit `siteTitle` and `pages` to declare the basic structure of the app.
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
@@ -26,7 +26,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Run Tests
 
-Tests use Jest and React Testing Library to test UI components and units. Use `npm run test` to initialize tests.
+Tests use Jest and React Testing Library to test UI components and units. Use `npm run test` or `npm run test:watch` to initialize tests.
 
 ## Config
 
