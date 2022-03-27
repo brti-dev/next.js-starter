@@ -1,8 +1,8 @@
-/* eslint-disable prefer-template */
-import React, { useState } from 'react'
+import { IconButton } from 'matterial'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import React, { useState } from 'react'
 import {
   BiArrowToTop as ArrowTopIcon,
   BiMenu as MenuIcon,
@@ -13,7 +13,6 @@ import '@reach/skip-nav/styles.css'
 import config from '../../../package.json'
 import scrollToTop from 'lib/scroll-to-top'
 import useMediaQuery from 'lib/use-media-query'
-import { IconButton } from 'matterial/Button'
 import classes from './layout.module.scss'
 
 const { pages, siteTitle } = config

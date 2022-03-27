@@ -2,8 +2,7 @@
 import type { AppProps /*, AppContext */ } from 'next/app'
 
 import 'normalize.css'
-// import '../node_modules/matterial/dist/global.css'
-import '../../mtui/packages/matterial/dist/global.css'
+import '../node_modules/matterial/dist/main.css'
 import 'styles/custom.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {

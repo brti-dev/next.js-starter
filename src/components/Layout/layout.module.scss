@@ -5,17 +5,21 @@
 .section,
 .main,
 .footer {
+  @include breakpoint(screen) {
+    --layout-spacing: var(--space-large);
+  }
+
   box-sizing: border-box;
   max-width: 1280px;
   margin: 0 auto;
-  padding-right: var(--spacing);
-  padding-left: var(--spacing);
+  padding-right: var(--layout-spacing, var(--space-small));
+  padding-left: var(--layout-spacing, var(--space-small));
 }
 
 .header {
   width: 100%;
-  margin-top: var(--spacing);
-  margin-bottom: var(--spacing);
+  margin-top: var(--layout-spacing, var(--space-small));
+  margin-bottom: var(--layout-spacing, var(--space-small));
 
   & > [class~='heading'] {
     display: flex;
@@ -71,13 +75,13 @@
 
 .footer {
   position: relative;
-  margin-top: calc(var(--spacing) * 3);
-  margin-bottom: var(--spacing);
+  margin-top: calc(var(--layout-spacing, var(--space-small)) * 3);
+  margin-bottom: var(--layout-spacing, var(--space-small));
   line-height: 1.6;
   font-size: 90%;
 
   @include breakpoint(screen) {
-    margin-top: var(--spacing);
+    margin-top: var(--layout-spacing, var(--space-small));
   }
 
   nav ul {
@@ -119,7 +123,7 @@
 .scrollToTop {
   position: absolute;
   bottom: 0;
-  right: var(--spacing);
+  right: var(--layout-spacing, var(--space-small));
   transition: transform 0.2s ease-in-out;
 
   @include breakpoint(screen) {

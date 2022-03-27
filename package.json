@@ -34,6 +34,8 @@
     "test": "jest --watch"
   },
   "dependencies": {
+    "@reach/skip-nav": "^0.16.0",
+    "matterial": "^1.0.7",
     "next": "^12.1.0",
     "normalize.css": "^8.0.1",
     "react": "17.0.2",
