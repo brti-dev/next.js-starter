@@ -1,11 +1,37 @@
 /*
  * Custom app styles
  *
- * Overwrites global.scss
+ * Overwrites main Matterial CSS
+ * @see the full list of variables and selectors in 
+ * node_modules/matterial/dist/main.css
  */
 
 @use 'fonts' as *;
 
+// The following variables are highly customizable. Any variables not assigned
+// will use default Matterial color scheme.
+// @see default color scheme https://matterial.brti.dev/color
 :root {
-  --color-primary: salmon;
+  // --color-background: salsa; // Main page bg
+  // --color-foreground: indigo; // Fonts, icons, etc
+  // --color-primary: salmon;
+  // --color-primary-hover: cod;
+  // --color-secondary: hotpink;
+  // --color-secondary-hover: hotblue;
+  // --color-surface: gray;
+  // --color-surface-hover: darkgray;
+  // --color-comment: darkestgray;
+
+  // Dark theme variables
+  @include theme(dark) {
+    // --color-background: ; // Main page bg
+    // --color-foreground: ; // Fonts, icons, etc
+    // --color-primary: ;
+    // --color-primary-hover: ;
+    // --color-secondary: ;
+    // --color-secondary-hover: ;
+    // --color-surface: ;
+    // --color-surface-hover: ;
+    // --color-comment: ;
+  }
 }
