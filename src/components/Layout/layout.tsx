@@ -1,12 +1,9 @@
-import { IconButton } from 'matterial'
+import { Button, ArrowTopIcon } from 'matterial'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
-import {
-  BiArrowToTop as ArrowTopIcon,
-  BiMenu as MenuIcon,
-} from 'react-icons/bi'
+import * as React from 'react'
+import { BiMenu as MenuIcon } from 'react-icons/bi'
 import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 
@@ -37,7 +34,7 @@ export function Header({ children }: OptionalChildren) {
 
   const currentPageIndex = PAGES.findIndex(page => page.link === pathnameRoot)
 
-  const [menu, setMenu] = useState(isScreenMobile)
+  const [menu, setMenu] = React.useState(isScreenMobile)
   const handleOpenMenu = () => setMenu(!menu)
 
   return (
@@ -45,9 +42,9 @@ export function Header({ children }: OptionalChildren) {
       <div className="heading">
         <h1>{SITE_TITLE}</h1>
         {isScreenMobile && (
-          <IconButton onClick={handleOpenMenu}>
+          <Button shape="circle" onClick={handleOpenMenu}>
             <MenuIcon />
-          </IconButton>
+          </Button>
         )}
       </div>
       <nav
@@ -91,9 +88,13 @@ export function Footer({ children }: OptionalChildren) {
           ))}
         </ul>
       </nav>
-      <IconButton className={classes.scrollToTop} onClick={scrollToTop}>
+      <Button
+        shape="circle"
+        className={classes.scrollToTop}
+        onClick={scrollToTop}
+      >
         <ArrowTopIcon />
-      </IconButton>
+      </Button>
       {children}
     </footer>
   )
