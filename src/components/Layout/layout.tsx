@@ -1,4 +1,4 @@
-import { Button, ArrowTopIcon } from 'matterial'
+import { Button, Icon } from 'matterial'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -93,7 +93,7 @@ export function Footer({ children }: OptionalChildren) {
         className={classes.scrollToTop}
         onClick={scrollToTop}
       >
-        <ArrowTopIcon />
+        <Icon.ArrowToTop />
       </Button>
       {children}
     </footer>
