@@ -32,7 +32,7 @@
     "@testing-library/user-event": "^14.2.0",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.6",
-    "@types/react": "^17.0.8",
+    "@types/react": "^18.0.14",
     "@types/react-dom": "^17.0.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.0",

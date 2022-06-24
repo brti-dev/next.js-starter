@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import Home from '../pages/index'
 import '@testing-library/jest-dom'
 
