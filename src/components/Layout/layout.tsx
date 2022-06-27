@@ -8,17 +8,10 @@ import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
 import '@reach/skip-nav/styles.css'
 
 import { PAGES, SITE_TITLE } from '../../lib/const'
+import { RequiredChildren, OptionalChildren } from 'interfaces/children'
 import scrollToTop from 'lib/scroll-to-top'
 import useMediaQuery from 'lib/use-media-query'
 import classes from './layout.module.scss'
-
-type OptionalChildren = {
-  children?: React.ReactChild | React.ReactChild[]
-}
-
-type RequiredChildren = {
-  children: React.ReactChild | React.ReactChild[]
-}
 
 export type LayoutProps = {
   title?: string
